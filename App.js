@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { ToastProvider } from "react-native-toast-notifications";
-import { Text } from "react-native";
+import TabNavigator from "navigation/TabNavigator";
 
 const navTheme = {
   ...DefaultTheme,
@@ -35,7 +35,7 @@ const App = () => {
         animationType="slide-in"
       >
         <NavigationContainer theme={navTheme}>
-          <Text>hello</Text>
+          <TabNavigator />
         </NavigationContainer>
       </ToastProvider>
     </SafeAreaProvider>

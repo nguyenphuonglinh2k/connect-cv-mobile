@@ -18,9 +18,9 @@ const SignIn = () => {
     }
 
     return (
-        <ScrollView style={{ flex: 1, padding: 16 }}>
+        <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)" }}>
             <View>
-                <Text style={styles.signInText}>SignIn</Text>
+                <Text style={styles.signInText}>Sign In</Text>
             </View>
             <View>
                 <Text style={{ color: "#6d27d1" }}>Please fill registration form below</Text>
@@ -43,11 +43,14 @@ const SignIn = () => {
                 <View style={{ display: "flex", alignSelf: "center" }}>
                     <Text style={styles.forgotPassword}>Forgot your password ?</Text>
                 </View>
-                <View style={{ display: "flex", alignSelf: "center" }}>
+                <View style={{ display: "flex", alignSelf: "center", width: "100%", }}>
                     <ContainedButton
                         onPress={onLogin}
                         label="Sign In"
                         style={styles.gradientButton}
+                        color="rgba(109, 39, 209, 1)"
+
+
                     />
                 </View>
                 <View style={{ display: "flex", alignSelf: "center" }}>
@@ -69,7 +72,7 @@ const SignIn = () => {
 
 const styles = StyleSheet.create({
     signInText: {
-        marginTop: 20,
+        marginTop: 10,
         marginBottom: 20,
         fontSize: 28,
         fontWeight: 'bold',
@@ -110,7 +113,8 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         justifyContent: "center",
-    }
+        backgroundColor: "#FFFFFF"
+    },
 });
 
 export default SignIn;

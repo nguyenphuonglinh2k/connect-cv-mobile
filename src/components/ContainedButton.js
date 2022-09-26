@@ -10,6 +10,7 @@ const ContainedButton = ({
     labelProps,
     gradientProps,
     disabled,
+    color,
     ...otherProps
 }) => {
     const { style: labelStyle, ...otherLabelProps } = labelProps;
@@ -19,14 +20,14 @@ const ContainedButton = ({
         <TouchableOpacity
             onPress={!disabled && onPress}
             activeOpacity={0.5}
-            style={[{ width: 200 }, style]}
+            style={[{ width: '100%' }, style]}
             {...otherProps}
         >
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0, 0.75]}
-                colors={["#6d27d1", "#6d27d1"]}
+                colors={[color ? color : "rgba(109, 39, 209, 1)", color ? color : "rgba(109, 39, 209, 1)"]}
                 style={[
                     { opacity: disabled ? 0.4 : 1 },
                     defaultStyles.linearGradient,
@@ -60,6 +61,7 @@ export default ContainedButton;
 
 ContainedButton.propTypes = {
     label: PropTypes.string,
+    color: PropTypes.string,
     onPress: PropTypes.func,
     style: PropTypes.object,
     labelProps: PropTypes.shape({

@@ -22,7 +22,7 @@ const CommonTextInput = ({
             <TextInput
                 ref={inputRef}
                 placeholder={placeholder}
-                placeholderTextColor="rgba(109, 39, 209, 0.3)"
+                placeholderTextColor="#B4B4B4"
                 style={[
                     styles.input,
                     inputRef.current?.isFocused() && styles.focused,
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         borderColor: "#C4C4C4",
         borderWidth: 1,
+        backgroundColor: "#FFFFFF",
     },
     label: {
         marginBottom: 4,

@@ -3,6 +3,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { ToastProvider } from "react-native-toast-notifications";
 import DrawerNavigator from "./src/navigation/DrawerNavigator";
+import { AuthStack } from './src/navigation/StackNavigator';
 
 const navTheme = {
   ...DefaultTheme,
@@ -35,8 +36,11 @@ const App = () => {
         animationType="slide-in"
       >
         <NavigationContainer theme={navTheme}>
-          <DrawerNavigator />
+          {/* <DrawerNavigator /> */}
+          <AuthStack />
         </NavigationContainer>
+
+
       </ToastProvider>
     </SafeAreaProvider>
   );

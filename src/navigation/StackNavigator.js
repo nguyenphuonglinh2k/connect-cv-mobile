@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { HomeScreen } from "screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,14 +20,6 @@ const AuthStack = () => {
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="auth" component={AuthScreen} />
     </Stack.Navigator>
-  );
-};
-
-const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>home</Text>
-    </View>
   );
 };
 

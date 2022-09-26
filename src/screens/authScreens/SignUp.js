@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { ContainedButton, CommonTextInput } from "components"
 
-const SignIn = () => {
-    const [userName, onChangeText] = React.useState(null);
+const SignUp = () => {
+    const [userName, onChangeUserName] = React.useState(null);
+    const [userEmail, onChangeEmail] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
 
     const onLogin = () => {
@@ -20,17 +21,24 @@ const SignIn = () => {
     return (
         <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)" }}>
             <View>
-                <Text style={styles.signInText}>Sign In</Text>
+                <Text style={styles.signInText}>Create an account</Text>
             </View>
             <View>
-                <Text style={{ color: "#6d27d1" }}>Please sign in to your registered account</Text>
+                <Text style={{ color: "#6d27d1" }}>Please fill registration form below</Text>
             </View>
             <SafeAreaView style={styles.inputBlock}>
                 <CommonTextInput
                     value={userName}
-                    onChangeText={onChangeText}
+                    onChangeText={onChangeUserName}
                     keyboardType="user-name"
                     placeholder="User name"
+                />
+                <CommonTextInput
+                    value={userName}
+                    onChangeText={onChangeEmail}
+                    keyboardType="user-email"
+                    placeholder="User email"
+                    style={styles.passwordInput}
                 />
                 <CommonTextInput
                     value={password}
@@ -40,10 +48,7 @@ const SignIn = () => {
                     style={styles.passwordInput}
                     secureTextEntry
                 />
-                <View style={{ display: "flex", alignSelf: "center" }}>
-                    <Text style={styles.forgotPassword}>Forgot your password ?</Text>
-                </View>
-                <View style={{ display: "flex", alignSelf: "center", width: "100%", }}>
+                <View style={{ display: "flex", alignSelf: "center", width: "100%", marginTop: 30 }}>
                     <ContainedButton
                         onPress={onLogin}
                         label="Sign In"
@@ -52,15 +57,7 @@ const SignIn = () => {
                     />
                 </View>
                 <View style={{ display: "flex", alignSelf: "center" }}>
-                    <Text style={styles.otherSignInText}>--- Or sign in with ---</Text>
-                </View>
-                <View style={styles.otherSignIn}>
-                    <View style={styles.socialNetwork}>
-                        <Image style={{ width: 30, height: 30 }} source={require("./google.png")} />
-                    </View>
-                    <View style={styles.socialNetwork}>
-                        <Image style={{ width: 30, height: 30 }} source={require("./facebook.png")} />
-                    </View>
+                    <Text style={styles.otherSignInText}>By tapping "Sign Up" you accept our <Text styles={styles.terms}>terms</Text> and <Text styles={styles.terms}>condition</Text></Text>
                 </View>
             </SafeAreaView>
 
@@ -75,8 +72,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: "#6d27d1"
     },
+    block: {
+        flex: 1
+    },
     inputBlock: {
-        marginTop: 24
+        marginTop: 24,
+        flex: 5,
+        height: '100%',
     },
     passwordInput: {
         marginTop: 18
@@ -89,29 +91,16 @@ const styles = StyleSheet.create({
 
     },
     gradientButton: {
-        marginTop: 10,
+        marginTop: 30,
     },
     otherSignInText: {
-        color: "#6d27d1",
         fontSize: 16,
         marginVertical: 30
     },
-    otherSignIn: {
-        marginHorizontal: "5%",
-        flexDirection: 'row',
-        justifyContent: "space-between",
-
-    },
-    socialNetwork: {
-        width: "45%",
-        borderWidth: 1,
-        borderRadius: 28,
-        borderColor: "#ceb5f1",
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: "center",
-        backgroundColor: "#FFFFFF"
-    },
+    terms: {
+        fontWeight: 'bold',
+        color: "#6d27d1"
+    }
 });
 
-export default SignIn;
+export default SignUp;

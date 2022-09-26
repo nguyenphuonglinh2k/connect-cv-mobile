@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   SignIn,
+  SignUp
 } from "screens";
 import { RouteName } from "const/path.const";
 
@@ -22,6 +23,7 @@ const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={RouteName.SIGN_IN} component={SignIn} />
+      <Stack.Screen name={RouteName.SIGN_UP} component={SignUp} />
     </Stack.Navigator>
   );
 };

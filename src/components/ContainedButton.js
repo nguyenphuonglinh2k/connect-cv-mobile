@@ -10,7 +10,7 @@ const ContainedButton = ({
     labelProps,
     gradientProps,
     disabled,
-    color,
+    backgroundColor,
     ...otherProps
 }) => {
     const { style: labelStyle, ...otherLabelProps } = labelProps;
@@ -27,7 +27,7 @@ const ContainedButton = ({
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0, 0.75]}
-                colors={[color ? color : "rgba(109, 39, 209, 1)", color ? color : "rgba(109, 39, 209, 1)"]}
+                colors={[backgroundColor ? backgroundColor : "rgba(109, 39, 209, 1)", backgroundColor ? backgroundColor : "rgba(109, 39, 209, 1)"]}
                 style={[
                     { opacity: disabled ? 0.4 : 1 },
                     defaultStyles.linearGradient,

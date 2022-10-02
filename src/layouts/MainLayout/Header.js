@@ -5,11 +5,11 @@ import { MenuIcon } from "icons";
 import { IconButton } from "components/common";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ headerRight }) => {
+const Header = ({ headerRight, style, ...otherProps }) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, style]} {...otherProps}>
       <IconButton onPress={() => navigation.toggleDrawer()}>
         <MenuIcon color="white" />
       </IconButton>
@@ -21,6 +21,7 @@ const Header = ({ headerRight }) => {
 
 Header.propTypes = {
   headerRight: PropTypes.node,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 const styles = StyleSheet.create({

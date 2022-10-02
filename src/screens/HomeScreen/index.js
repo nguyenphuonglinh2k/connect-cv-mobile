@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Banner from "./Banner";
 import RecentJobs from "./RecentJobs";
@@ -14,7 +13,5 @@ const HomeScreen = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default HomeScreen;

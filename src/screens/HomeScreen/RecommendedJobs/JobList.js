@@ -16,7 +16,7 @@ const JobList = props => {
   );
 };
 
-const MOCK_DATA = Array.from(new Array(10)).map(() => ({
+const MOCK_DATA = Array.from(new Array(5)).map(() => ({
   logo: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/logo/company-logo1.png",
   companyName: "Highspeed Studios",
   jobName: "Software Engineer",

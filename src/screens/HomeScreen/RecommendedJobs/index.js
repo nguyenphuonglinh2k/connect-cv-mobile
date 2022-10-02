@@ -5,7 +5,7 @@ import JobList from "./JobList";
 
 const RecommendedJobs = () => {
   return (
-    <View>
+    <View style={styles.wrapper}>
       <View style={styles.header}>
         <Text style={styles.title}>Recommended Jobs</Text>
         <TextButton>More</TextButton>
@@ -16,6 +16,10 @@ const RecommendedJobs = () => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: 500,
+    fontWeight: "500",
   },
 });
 

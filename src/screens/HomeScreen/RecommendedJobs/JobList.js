@@ -1,15 +1,18 @@
 import CardJobItem from "components/CardJobItem";
 import React from "react";
-import { FlatList } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 const JobList = props => {
   return (
-    <FlatList
-      data={MOCK_DATA}
-      renderItem={({ item }) => <CardJobItem data={item} />}
-      keyExtractor={(_, i) => i}
-      {...props}
-    />
+    <View {...props}>
+      {MOCK_DATA.map((item, index) => (
+        <CardJobItem
+          key={index}
+          data={item}
+          style={index !== 0 ? styles.item : {}}
+        />
+      ))}
+    </View>
   );
 };
 
@@ -20,5 +23,11 @@ const MOCK_DATA = Array.from(new Array(10)).map(() => ({
   salary: "$500 - $1,000",
   location: "Jakarta, Indonesia",
 }));
+
+const styles = StyleSheet.create({
+  item: {
+    marginTop: 10,
+  },
+});
 
 export default JobList;

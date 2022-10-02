@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { Path, Defs, G, Rect } from "react-native-svg";
+import Svg, { Path, Defs, G, Rect, ClipPath } from "react-native-svg";
 import PropTypes from "prop-types";
 
 const BagIcon = ({ height, width, color, ...otherProps }) => {
@@ -23,9 +23,9 @@ const BagIcon = ({ height, width, color, ...otherProps }) => {
         />
       </G>
       <Defs>
-        <clipPath id="clip0_769_1980">
+        <ClipPath id="clip0_769_1980">
           <Rect width={width} height={height} fill="white" />
-        </clipPath>
+        </ClipPath>
       </Defs>
     </Svg>
   );

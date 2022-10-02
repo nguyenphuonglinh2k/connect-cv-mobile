@@ -8,6 +8,7 @@ import SettingIcon from "./SettingIcon";
 import EmailIcon from "./EmailIcon";
 import CoinIcon from "./CoinIcon";
 import BagIcon from "./BagIcon";
+import BookmarkIcon from "./BookmarkIcon";
 
 export {
   HomeIcon,
@@ -20,4 +21,5 @@ export {
   EmailIcon,
   CoinIcon,
   BagIcon,
+  BookmarkIcon,
 };

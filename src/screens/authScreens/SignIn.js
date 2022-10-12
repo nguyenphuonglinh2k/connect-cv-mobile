@@ -8,8 +8,12 @@ import {
     Image
 } from "react-native";
 import { ContainedButton, CommonTextInput } from "components"
+import { useNavigation } from "@react-navigation/native";
+import { RouteName } from "const/path.const";
 
 const SignIn = () => {
+    const navigation = useNavigation();
+
     const [userName, onChangeText] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
 
@@ -18,7 +22,8 @@ const SignIn = () => {
     }
 
     return (
-        <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)" }}>
+        <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)", }}>
+
             <View>
                 <Text style={styles.signInText}>Sign In</Text>
             </View>
@@ -43,12 +48,12 @@ const SignIn = () => {
                 <View style={{ display: "flex", alignSelf: "center" }}>
                     <Text style={styles.forgotPassword}>Forgot your password ?</Text>
                 </View>
-                <View style={{ display: "flex", alignSelf: "center", width: "100%", }}>
+                <View style={{ display: "flex", alignItems: "center", width: "100%" }}>
                     <ContainedButton
                         onPress={onLogin}
-                        label="Sign In"
-                        style={styles.gradientButton}
-                        backgroundColor="rgba(109, 39, 209, 1)"
+                        title="Sign In"
+                        style={styles.signInButton}
+                        buttonColor="#6d27d1"
                     />
                 </View>
                 <View style={{ display: "flex", alignSelf: "center" }}>
@@ -62,7 +67,18 @@ const SignIn = () => {
                         <Image style={{ width: 30, height: 30 }} source={require("./facebook.png")} />
                     </View>
                 </View>
+
             </SafeAreaView>
+            <View style={styles.navigationSignUp}>
+                <Text >Don’t have an account? </Text>
+                <Text
+                    onPress={() => navigation.navigate(RouteName.SIGN_UP)}
+                    style={{ color: "rgba(109, 39, 209, 0.8)", fontWeight: "bold", fontStyle: "underline" }}
+                >
+                    Sign up
+                </Text>
+            </View>
+
 
         </ScrollView>
     );
@@ -88,8 +104,15 @@ const styles = StyleSheet.create({
         marginVertical: 30
 
     },
-    gradientButton: {
+    signInButton: {
+        borderWidth: 1,
+        borderRadius: 30,
+        borderColor: "transparent",
+        backgroundColor: "#6d27d1",
         marginTop: 10,
+        width: 150,
+        alignItems: "center",
+        padding: 10,
     },
     otherSignInText: {
         color: "#6d27d1",
@@ -112,6 +135,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#FFFFFF"
     },
+    navigationSignUp: {
+        alignItems: "center",
+        marginTop: 30
+    }
 });
 
 export default SignIn;

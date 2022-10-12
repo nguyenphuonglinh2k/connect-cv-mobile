@@ -1,20 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const ContainedButton = ({
-    label,
+    title,
     onPress,
     style,
-    labelProps,
-    gradientProps,
     disabled,
-    backgroundColor,
     ...otherProps
 }) => {
-    const { style: labelStyle, ...otherLabelProps } = labelProps;
-    const { style: gradientStyle, ...otherGradientProps } = gradientProps;
 
     return (
         <TouchableOpacity
@@ -23,58 +17,27 @@ const ContainedButton = ({
             style={[{ width: '100%' }, style]}
             {...otherProps}
         >
-            <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                locations={[0, 0.75]}
-                colors={[backgroundColor ? backgroundColor : "rgba(109, 39, 209, 1)", backgroundColor ? backgroundColor : "rgba(109, 39, 209, 1)"]}
-                style={[
-                    { opacity: disabled ? 0.4 : 1 },
-                    defaultStyles.linearGradient,
-                    gradientStyle,
-                ]}
-                {...otherGradientProps}
-            >
-                <Text style={[defaultStyles.label, labelStyle]} {...otherLabelProps}>
-                    {label}
-                </Text>
-            </LinearGradient>
+            <Text style={[{ color: "#fff", fontWeight: 'bold', fontSize: 18 },]}>{title}</Text>
+
         </TouchableOpacity>
     );
 };
 
 const defaultStyles = StyleSheet.create({
-    label: {
-        color: "white",
-        textAlign: "center",
-        paddingVertical: 10,
-        fontWeight: "700",
-    },
-    linearGradient: {
-        borderRadius: 30,
-        overflow: "hidden",
-        width: "100%",
-    },
+    button: {
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 28,
+        borderWidth: 1,
+        marginLeft: 100
+    }
 });
 
 export default ContainedButton;
 
 ContainedButton.propTypes = {
-    label: PropTypes.string,
-    color: PropTypes.string,
+    title: PropTypes.string,
+    buttonColor: PropTypes.string,
     onPress: PropTypes.func,
     style: PropTypes.object,
-    labelProps: PropTypes.shape({
-        style: PropTypes.object,
-    }),
-    gradientProps: PropTypes.shape({
-        style: PropTypes.object,
-    }),
-    disabled: PropTypes.bool,
-};
-
-ContainedButton.defaultProps = {
-    labelProps: { style: {} },
-    gradientProps: { style: {} },
-    style: {},
 };

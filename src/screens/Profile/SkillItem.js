@@ -1,15 +1,25 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import CircularProgress from 'react-native-circular-progress-indicator';
 
-const SkillItem = () => {
+const SkillItem = ({
+    value,
+    activeStrokeColor,
+    skillName
+}) => {
     return (
         <View style={styles.skillItem}>
-            <View style={styles.skillLevel}>
-                <Text style={styles.percent}>60%</Text>
-            </View>
-            <View>
-                <Text style={styles.skillName}>PHP</Text>
-            </View>
+            <CircularProgress
+                value={value}
+                activeStrokeColor={activeStrokeColor}
+                inActiveStrokeColor={'#2ecc71'}
+                inActiveStrokeOpacity={0.1}
+                progressValueColor={'#000'}
+                valueSuffix={'%'}
+                delay={1000}
+                radius={30}
+            />
+            <Text style={styles.skillName}>{skillName}</Text>
         </View>
     )
 };
@@ -28,23 +38,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginRight: 18,
     },
-    skillLevel: {
-        width: 60,
-        height: 60,
-        backgroundColor: "#fff",
-        borderRadius: 30,
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: 16
-    },
-    percent: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000',
-    },
     skillName: {
         fontWeight: 'bold',
         color: '#000',
         fontSize: 16,
+        marginTop: 16,
+        marginBottom: 4
     }
 });

@@ -1,14 +1,13 @@
 import React from "react";
 import { View, Text, ImageBackground, StyleSheet, ScrollView, Image } from "react-native";
-import SkillItem from './skill_item'
+import SkillItem from "./SkillItem"
 
-const image = { uri: "https://reactjs.org/logo-og.png" };
 
 const ProfileStack = () => {
     return (
 
         <ScrollView style={styles.profileView}>
-            <ImageBackground source={image} resizeMode="cover" style={styles.backgroundImage}>
+            <ImageBackground source={require('./profileImg/cute.jpg')} resizeMode="cover" style={styles.backgroundImage}>
 
             </ImageBackground>
             <Image
@@ -68,7 +67,21 @@ const ProfileStack = () => {
                     Skill
                 </Text>
                 <View style={styles.skillList}>
-                    <SkillItem />
+                    <SkillItem
+                        activeStrokeColor='orange'
+                        value={85}
+                        skillName='PHP'
+                    />
+                    <SkillItem
+                        activeStrokeColor='green'
+                        value={50}
+                        skillName='Java'
+                    />
+                    <SkillItem
+                        activeStrokeColor='blue'
+                        value={33}
+                        skillName='React'
+                    />
                 </View>
             </View>
 

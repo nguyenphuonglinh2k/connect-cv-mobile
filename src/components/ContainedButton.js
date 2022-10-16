@@ -3,41 +3,31 @@ import PropTypes from "prop-types";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const ContainedButton = ({
-    title,
-    onPress,
-    style,
-    disabled,
-    ...otherProps
+  title,
+  onPress,
+  style,
+  disabled,
+  ...otherProps
 }) => {
 
-    return (
-        <TouchableOpacity
-            onPress={!disabled && onPress}
-            activeOpacity={0.5}
-            style={[{ width: '100%' }, style]}
-            {...otherProps}
-        >
-            <Text style={[{ color: "#fff", fontWeight: 'bold', fontSize: 18 },]}>{title}</Text>
+  return (
+    <TouchableOpacity
+      onPress={!disabled && onPress}
+      activeOpacity={0.5}
+      style={[{ width: '100%' }, style]}
+      {...otherProps}
+    >
+      <Text style={[{ color: "#fff", fontWeight: 'bold', fontSize: 18 },]}>{title}</Text>
 
-        </TouchableOpacity>
-    );
+    </TouchableOpacity>
+  );
 };
-
-const defaultStyles = StyleSheet.create({
-    button: {
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 28,
-        borderWidth: 1,
-        marginLeft: 100
-    }
-});
 
 export default ContainedButton;
 
 ContainedButton.propTypes = {
-    title: PropTypes.string,
-    buttonColor: PropTypes.string,
-    onPress: PropTypes.func,
-    style: PropTypes.object,
+  title: PropTypes.string,
+  buttonColor: PropTypes.string,
+  onPress: PropTypes.func,
+  style: PropTypes.object,
 };

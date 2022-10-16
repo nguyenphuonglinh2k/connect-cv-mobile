@@ -3,74 +3,52 @@ import PropTypes from "prop-types";
 import { StyleSheet, TextInput, Text } from "react-native";
 
 const CommonTextInput = ({
-    label,
-    style,
-    placeholder,
-    labelProps,
-    ...otherProps
+  style,
+  placeholder,
+  ...otherProps
 }) => {
-    const inputRef = useRef();
-    const { style: labelStyle, ...otherLabelProps } = labelProps;
+  const inputRef = useRef();
 
-    return (
-        <>
-            {Boolean(label) && (
-                <Text style={[styles.label, labelStyle]} {...otherLabelProps}>
-                    {label}
-                </Text>
-            )}
-            <TextInput
-                ref={inputRef}
-                placeholder={placeholder}
-                placeholderTextColor="#B4B4B4"
-                style={[
-                    styles.input,
-                    inputRef.current?.isFocused() && styles.focused,
-                    style,
-                ]}
-                {...otherProps}
-            />
-        </>
-    );
+  return (
+    <>
+      <TextInput
+        ref={inputRef}
+        placeholder={placeholder}
+        placeholderTextColor="#B4B4B4"
+        style={[
+          styles.input,
+          inputRef.current?.isFocused() && styles.focused,
+          style,
+        ]}
+        {...otherProps}
+      />
+    </>
+  );
 };
 
 CommonTextInput.propTypes = {
-    label: PropTypes.string,
-    style: PropTypes.object,
-    placeholder: PropTypes.string,
-    labelProps: PropTypes.shape({
-        style: PropTypes.object,
-    }),
-};
-
-CommonTextInput.defaultProps = {
-    labelProps: { style: {} },
+  style: PropTypes.object,
+  placeholder: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
-    input: {
-        position: "relative",
-        width: "100%",
-        borderRadius: 28,
-        fontWeight: "700",
-        fontSize: 12,
-        lineHeight: 14,
-        color: "#3A4664",
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        borderColor: "#C4C4C4",
-        borderWidth: 1,
-        backgroundColor: "#FFFFFF",
-    },
-    label: {
-        marginBottom: 4,
-        fontWeight: "700",
-        color: "#3A4664",
-        fontSize: 12,
-    },
-    focused: {
-        borderColor: "#9796F0",
-    },
+  input: {
+    position: "relative",
+    width: "100%",
+    borderRadius: 28,
+    fontWeight: "700",
+    fontSize: 12,
+    lineHeight: 14,
+    color: "#3A4664",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderColor: "#C4C4C4",
+    borderWidth: 1,
+    backgroundColor: "#FFFFFF",
+  },
+  focused: {
+    borderColor: "#9796F0",
+  },
 });
 
 export default CommonTextInput;

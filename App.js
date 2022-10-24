@@ -3,18 +3,20 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { ToastProvider } from "react-native-toast-notifications";
 import DrawerNavigator from "./src/navigation/DrawerNavigator";
+import { AuthStack } from "./src/navigation/StackNavigator";
 
 const navTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "#FFF",
+    background: "#f7f7f7",
     text: "#262626",
   },
 };
 
 const App = () => {
   const [splash, setSplash] = useState(true);
+  const isAuth = true;
 
   useEffect(() => {
     const splashTimeout = setTimeout(() => {
@@ -35,7 +37,7 @@ const App = () => {
         animationType="slide-in"
       >
         <NavigationContainer theme={navTheme}>
-          <DrawerNavigator />
+          {isAuth ? <DrawerNavigator /> : <AuthStack />}
         </NavigationContainer>
       </ToastProvider>
     </SafeAreaProvider>

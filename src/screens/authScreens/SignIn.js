@@ -5,9 +5,9 @@ import {
   View,
   Text,
   SafeAreaView,
-  Image
+  Image,
 } from "react-native";
-import { ContainedButton, CommonTextInput } from "components"
+import { ContainedButton, CommonTextInput } from "components";
 import { useNavigation } from "@react-navigation/native";
 import { RouteName } from "const/path.const";
 
@@ -17,18 +17,19 @@ const SignIn = () => {
   const [username, onChangeUsername] = useState(null);
   const [password, onChangePassword] = useState(null);
 
-  const onLogin = () => {
-    console.log("Hello")
-  }
+  const onLogin = () => {};
 
   return (
-    <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)", }}>
-
+    <ScrollView
+      style={{ flex: 1, padding: 16, backgroundColor: "rgba(225,225,225,0.3)" }}
+    >
       <View>
         <Text style={styles.signInText}>Sign In</Text>
       </View>
       <View>
-        <Text style={{ color: "#6d27d1" }}>Please sign in to your registered account</Text>
+        <Text style={{ color: "#6d27d1" }}>
+          Please sign in to your registered account
+        </Text>
       </View>
       <SafeAreaView style={styles.inputBlock}>
         <CommonTextInput
@@ -56,34 +57,48 @@ const SignIn = () => {
             buttonColor="#6d27d1"
           />
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20, justifyContent: 'center' }}>
-          <View style={{ height: 1, backgroundColor: 'black', width: 16 }} />
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginVertical: 20,
+            justifyContent: "center",
+          }}
+        >
+          <View style={{ height: 1, backgroundColor: "black", width: 16 }} />
           <View>
             <Text style={styles.otherSignInText}>Or sign in with</Text>
           </View>
-          <View style={{ height: 1, backgroundColor: 'black', width: 16 }} />
+          <View style={{ height: 1, backgroundColor: "black", width: 16 }} />
         </View>
         <View style={styles.otherSignIn}>
           <View style={styles.socialNetwork}>
-            <Image style={{ width: 30, height: 30 }} source={require("./google.png")} />
+            <Image
+              style={{ width: 30, height: 30 }}
+              source={require("./google.png")}
+            />
           </View>
           <View style={styles.socialNetwork}>
-            <Image style={{ width: 30, height: 30 }} source={require("./facebook.png")} />
+            <Image
+              style={{ width: 30, height: 30 }}
+              source={require("./facebook.png")}
+            />
           </View>
         </View>
-
       </SafeAreaView>
       <View style={styles.navigationSignUp}>
-        <Text >Don’t have an account? </Text>
+        <Text>Don’t have an account? </Text>
         <Text
           onPress={() => navigation.navigate(RouteName.SIGN_UP)}
-          style={{ color: "rgba(109, 39, 209, 0.8)", fontWeight: "bold", fontStyle: "underline" }}
+          style={{
+            color: "rgba(109, 39, 209, 0.8)",
+            fontWeight: "bold",
+            fontStyle: "underline",
+          }}
         >
           Sign up
         </Text>
       </View>
-
-
     </ScrollView>
   );
 };
@@ -92,21 +107,20 @@ const styles = StyleSheet.create({
   signInText: {
     marginBottom: 10,
     fontSize: 28,
-    fontWeight: 'bold',
-    color: "#6d27d1"
+    fontWeight: "bold",
+    color: "#6d27d1",
   },
   inputBlock: {
-    marginTop: 24
+    marginTop: 24,
   },
   passwordInput: {
-    marginTop: 18
+    marginTop: 18,
   },
   forgotPassword: {
     color: "#6d27d1",
     fontSize: 16,
     fontWeight: "bold",
-    marginVertical: 30
-
+    marginVertical: 30,
   },
   signInButton: {
     borderWidth: 1,
@@ -122,13 +136,12 @@ const styles = StyleSheet.create({
     color: "#6d27d1",
     fontSize: 16,
     width: 110,
-    textAlign: 'center'
+    textAlign: "center",
   },
   otherSignIn: {
     marginHorizontal: "5%",
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-between",
-
   },
   socialNetwork: {
     width: "45%",
@@ -136,14 +149,14 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     borderColor: "#ceb5f1",
     padding: 10,
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#FFFFFF",
   },
   navigationSignUp: {
     alignItems: "center",
-    marginTop: 30
-  }
+    marginTop: 30,
+  },
 });
 
 export default SignIn;

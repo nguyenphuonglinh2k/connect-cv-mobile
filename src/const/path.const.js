@@ -13,4 +13,5 @@ export const RouteName = {
   filter: "FilterScreen",
   signIn: "SignIn",
   signUp: "SignUp",
+  profile: "ProfileScreen",
 };

@@ -9,6 +9,7 @@ import {
   SignUp,
   SearchScreen,
   FilterScreen,
+  Profile,
 } from "screens";
 
 const Stack = createNativeStackNavigator();
@@ -52,9 +53,9 @@ const ChatStack = () => {
 
 const ProfileStack = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Profile</Text>
-    </View>
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name={RouteName.profile} component={Profile} />
+    </Stack.Navigator>
   );
 };
 

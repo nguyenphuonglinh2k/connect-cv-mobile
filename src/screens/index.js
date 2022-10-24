@@ -1,3 +1,4 @@
+import Profile from "./Profile";
 import SignIn from "./authScreens/SignIn";
 import SignUp from "./authScreens/SignUp";
 import HomeScreen from "./HomeScreen";
@@ -12,4 +13,5 @@ export {
   SignUp,
   SearchScreen,
   FilterScreen,
+  Profile,
 };

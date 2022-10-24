@@ -1,4 +1,4 @@
-import Profile from "./Profile";
+import Profile from "./ProfileScreen";
 import SignIn from "./authScreens/SignIn";
 import SignUp from "./authScreens/SignUp";
 import HomeScreen from "./HomeScreen";

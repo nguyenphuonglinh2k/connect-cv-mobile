@@ -7,11 +7,10 @@ export const TabName = {
 };
 
 export const RouteName = {
-  SIGN_IN: "SIGN_IN",
-  SIGN_UP: "SIGN_UP",
-  PROFILE: "PROFILE",
-  SETTING: "SETTING",
-  FORGOT_PASSWORD: "FORGOT_PASSWORD",
-  RESET_PASSWORD: "RESET_PASSWORD",
-  HOME: "HOME",
+  home: "HomeScreen",
+  search: "SearchScreen",
+  jobDetail: "JobDetailScreen",
+  filter: "FilterScreen",
+  signIn: "SignIn",
+  signUp: "SignUp",
 };

@@ -1,30 +1,25 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RouteName } from "const/path.const";
 import {
   HomeScreen,
   JobDetailScreen,
+  SignIn,
+  SignUp,
   SearchScreen,
   FilterScreen,
 } from "screens";
-import { RouteName } from "const/path.const";
 
 const Stack = createNativeStackNavigator();
 
 const screenOptions = { headerShown: false };
 
-const AuthScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>auth</Text>
-    </View>
-  );
-};
-
 const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="auth" component={AuthScreen} />
+      <Stack.Screen name={RouteName.signIn} component={SignIn} />
+      <Stack.Screen name={RouteName.signUp} component={SignUp} />
     </Stack.Navigator>
   );
 };

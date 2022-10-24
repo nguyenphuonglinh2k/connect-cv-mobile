@@ -11,4 +11,6 @@ export const RouteName = {
   search: "SearchScreen",
   jobDetail: "JobDetailScreen",
   filter: "FilterScreen",
+  signIn: "SignIn",
+  signUp: "SignUp",
 };

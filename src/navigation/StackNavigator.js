@@ -1,23 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  SignIn,
-  SignUp
-} from "screens";
 import { RouteName } from "const/path.const";
+import { HomeScreen, JobDetailScreen, SignIn, SignUp } from "screens";
 
 const Stack = createNativeStackNavigator();
 
 const screenOptions = { headerShown: false };
-
-const AuthScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>auth</Text>
-    </View>
-  );
-};
 
 const AuthStack = () => {
   return (
@@ -25,14 +14,6 @@ const AuthStack = () => {
       <Stack.Screen name={RouteName.SIGN_IN} component={SignIn} />
       <Stack.Screen name={RouteName.SIGN_UP} component={SignUp} />
     </Stack.Navigator>
-  );
-};
-
-const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>home</Text>
-    </View>
   );
 };
 
@@ -46,9 +27,9 @@ const HomeStack = () => {
 
 const SearchScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>search</Text>
-    </View>
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="jobDetail" component={JobDetailScreen} />
+    </Stack.Navigator>
   );
 };
 

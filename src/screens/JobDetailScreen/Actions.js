@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import BookmarkIcon from "icons/BookmarkIcon";
 
 const Actions = () => {
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleToggleSaveStatus = () => {
+    setIsSaved(!isSaved);
+  };
+
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.icon}>
-        <BookmarkIcon fill={MOCK_SAVED ? "#673ab7" : "none"} />
+      <TouchableOpacity style={styles.icon} onPress={handleToggleSaveStatus}>
+        <BookmarkIcon fill={isSaved ? "#673ab7" : "none"} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn}>
         <Text style={styles.textBtn}>Apply job</Text>
@@ -14,8 +20,6 @@ const Actions = () => {
     </View>
   );
 };
-
-const MOCK_SAVED = false;
 
 Actions.propTypes = {};
 

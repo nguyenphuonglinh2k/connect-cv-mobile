@@ -1,7 +1,13 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, JobDetailScreen } from "screens";
+import {
+  HomeScreen,
+  JobDetailScreen,
+  SearchScreen,
+  FilterScreen,
+} from "screens";
+import { RouteName } from "const/path.const";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,15 +32,7 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-    </Stack.Navigator>
-  );
-};
-
-const SearchScreen = () => {
-  return (
-    <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="jobDetail" component={JobDetailScreen} />
+      <Stack.Screen name={RouteName.home} component={HomeScreen} />
     </Stack.Navigator>
   );
 };
@@ -42,7 +40,9 @@ const SearchScreen = () => {
 const SearchStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="search" component={SearchScreen} />
+      <Stack.Screen name={RouteName.search} component={SearchScreen} />
+      <Stack.Screen name={RouteName.jobDetail} component={JobDetailScreen} />
+      <Stack.Screen name={RouteName.filter} component={FilterScreen} />
     </Stack.Navigator>
   );
 };

@@ -9,6 +9,8 @@ import EmailIcon from "./EmailIcon";
 import CoinIcon from "./CoinIcon";
 import BagIcon from "./BagIcon";
 import BookmarkIcon from "./BookmarkIcon";
+import FilterIcon from "./FilterIcon";
+import ChevronIcon from "./ChevronIcon";
 
 export {
   HomeIcon,
@@ -22,4 +24,6 @@ export {
   CoinIcon,
   BagIcon,
   BookmarkIcon,
+  FilterIcon,
+  ChevronIcon,
 };

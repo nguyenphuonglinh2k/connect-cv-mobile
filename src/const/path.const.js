@@ -1,6 +1,6 @@
 export const TabName = {
   home: "homeStack",
-  explore: "exploreStack",
+  search: "searchStack",
   profile: "profileStack",
   post: "postStack",
   chat: "chatStack",
@@ -14,4 +14,5 @@ export const RouteName = {
   signIn: "SignIn",
   signUp: "SignUp",
   profile: "ProfileScreen",
+  companyDetail: "CompanyDetailScreen",
 };

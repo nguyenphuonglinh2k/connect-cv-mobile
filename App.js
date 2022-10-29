@@ -9,7 +9,7 @@ const navTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "#f7f7f7",
+    background: "white",
     text: "#262626",
   },
 };

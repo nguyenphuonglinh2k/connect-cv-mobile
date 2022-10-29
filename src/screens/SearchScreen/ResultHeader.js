@@ -15,7 +15,7 @@ const ResultHeader = () => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.top}>
-        <Text style={styles.resultTxt}>Result</Text>
+        <Text style={styles.resultTxt}>Results</Text>
         <IconButton
           style={styles.iconWrapper}
           onPress={handleNavigateToFilterScreen}

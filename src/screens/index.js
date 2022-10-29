@@ -5,6 +5,7 @@ import HomeScreen from "./HomeScreen";
 import JobDetailScreen from "./JobDetailScreen";
 import SearchScreen from "./SearchScreen";
 import FilterScreen from "./FilterScreen";
+import CompanyDetailScreen from "./CompanyDetailScreen";
 
 export {
   HomeScreen,
@@ -14,4 +15,5 @@ export {
   SearchScreen,
   FilterScreen,
   Profile,
+  CompanyDetailScreen,
 };

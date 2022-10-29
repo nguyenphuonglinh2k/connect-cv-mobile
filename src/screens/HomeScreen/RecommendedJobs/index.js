@@ -1,14 +1,22 @@
+import { useNavigation } from "@react-navigation/native";
 import { TextButton } from "components/common";
+import { RouteName, TabName } from "const/path.const";
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import JobList from "./JobList";
 
 const RecommendedJobs = () => {
+  const navigation = useNavigation();
+
+  const handleGotoSearch = () => {
+    navigation.navigate(TabName.search, { screen: RouteName.search });
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.header}>
         <Text style={styles.title}>Recommended Jobs</Text>
-        <TextButton>More</TextButton>
+        <TextButton onPress={handleGotoSearch}>More</TextButton>
       </View>
       <JobList />
     </View>

@@ -10,6 +10,7 @@ import {
   SearchScreen,
   FilterScreen,
   Profile,
+  CompanyDetailScreen,
 } from "screens";
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,10 @@ const HomeStack = () => {
 const SearchStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name={RouteName.companyDetail}
+        component={CompanyDetailScreen}
+      />
       <Stack.Screen name={RouteName.search} component={SearchScreen} />
       <Stack.Screen name={RouteName.jobDetail} component={JobDetailScreen} />
       <Stack.Screen name={RouteName.filter} component={FilterScreen} />

@@ -1,12 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import CoinIcon from "icons/CoinIcon";
 import BagIcon from "icons/BagIcon";
+import { useNavigation } from "@react-navigation/core";
+import { RouteName, TabName } from "const/path.const";
 
 const CardJobItem = ({ data, style, ...otherProps }) => {
+  const navigation = useNavigation();
+
+  const handleGotoDetail = () => {
+    navigation.navigate(TabName.search, { screen: RouteName.jobDetail });
+  };
+
   return (
-    <View style={[styles.wrapper, style]} {...otherProps}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={[styles.wrapper, style]}
+      onPress={handleGotoDetail}
+      {...otherProps}
+    >
       <Image source={{ uri: data?.logo }} style={styles.logo} />
       <View style={{ flex: 1 }}>
         <Text style={styles.companyName}>{data?.companyName}</Text>
@@ -19,7 +32,7 @@ const CardJobItem = ({ data, style, ...otherProps }) => {
         />
         <IconTextRow icon={<BagIcon />} value={data?.location} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -35,7 +35,7 @@ export default function TabNavigator() {
       />
 
       <Tab.Screen
-        name={PathConstant.TabName.explore}
+        name={PathConstant.TabName.search}
         component={SearchStack}
         options={() => ({
           tabBarIcon: ({ focused }) => (

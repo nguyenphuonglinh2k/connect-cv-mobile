@@ -11,6 +11,9 @@ import BagIcon from "./BagIcon";
 import BookmarkIcon from "./BookmarkIcon";
 import FilterIcon from "./FilterIcon";
 import ChevronIcon from "./ChevronIcon";
+import StarIcon from "./StarIcon";
+import PhoneIcon from "./PhoneIcon";
+import LocationIcon from "./LocationIcon";
 
 export {
   HomeIcon,
@@ -26,4 +29,7 @@ export {
   BookmarkIcon,
   FilterIcon,
   ChevronIcon,
+  StarIcon,
+  PhoneIcon,
+  LocationIcon,
 };

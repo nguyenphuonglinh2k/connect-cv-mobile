@@ -9,12 +9,9 @@ import Actions from "./Actions";
 const JobDetailScreen = () => {
   return (
     <MainLayout
+      isBackScreen
       headerProps={{
-        title: "Details",
-        iconProps: {
-          color: "#A19FA8",
-        },
-        style: styles.header,
+        title: "Job Details",
       }}
     >
       <ScrollView style={styles.wrapper}>
@@ -42,10 +39,6 @@ const JOB = {
 const styles = StyleSheet.create({
   wrapper: {
     paddingVertical: 15,
-  },
-  header: {
-    borderBottomWidth: 1,
-    borderColor: "#ddd",
   },
 });
 

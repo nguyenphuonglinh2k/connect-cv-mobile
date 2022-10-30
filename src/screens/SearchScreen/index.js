@@ -12,6 +12,7 @@ const SearchScreen = () => {
     <MainLayout
       headerProps={{
         iconProps: { color: "#A19FA8" },
+        style: { backgroundColor: "#f0f0f0" },
       }}
     >
       <View style={styles.wrapper}>

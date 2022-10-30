@@ -1,3 +1,8 @@
+import { useNavigation } from "@react-navigation/core";
+import { IconButton } from "components/common";
+import { RouteName } from "const/path.const";
+import PencilIcon from "icons/PencilIcon";
+import { MainLayout } from "layouts";
 import React from "react";
 import {
   View,
@@ -10,71 +15,87 @@ import {
 import SkillItem from "./SkillItem";
 
 const ProfileStack = () => {
+  const navigation = useNavigation();
+
   return (
-    <ScrollView style={styles.profileView}>
-      <ImageBackground
-        source={{
-          uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/bg2.png",
-        }}
-        style={styles.backgroundImage}
-      />
-      <Image
-        style={styles.tinyAvatar}
-        source={{
-          uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/message/pic6.jpg",
-        }}
-      />
-      <View style={styles.information}>
-        <Text style={styles.name}>David</Text>
-        <Text style={styles.position}>Programmer</Text>
-        <View>
-          <Text style={styles.description}>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu
-          </Text>
-        </View>
-        <View style={styles.contactMethod}>
-          <View style={styles.borderCircle}>
-            <Image
-              style={styles.phone}
-              source={require("./profileImg/phone_1.png")}
-            />
-          </View>
-          <View style={styles.borderCircle}>
-            <Image
-              style={styles.email}
-              source={require("./profileImg/email.png")}
-            />
-          </View>
-          <View style={styles.borderCircle}>
-            <Image
-              style={styles.location}
-              source={require("./profileImg/placeholder.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.myResume}>
+    <MainLayout
+      headerProps={{
+        iconProps: { color: "#A19FA8" },
+        style: { backgroundColor: "#f0f0f0" },
+        headerRight: (
+          <IconButton
+            onPress={() => navigation.navigate(RouteName.editProfile)}
+          >
+            <PencilIcon />
+          </IconButton>
+        ),
+      }}
+    >
+      <ScrollView>
+        <ImageBackground
+          source={{
+            uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/bg2.png",
+          }}
+          style={styles.backgroundImage}
+        />
+        <Image
+          style={styles.tinyAvatar}
+          source={{
+            uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/message/pic6.jpg",
+          }}
+        />
+        <View style={styles.information}>
+          <Text style={styles.name}>David</Text>
+          <Text style={styles.position}>Programmer</Text>
           <View>
-            <Text style={styles.resumeTitle}>My Resume</Text>
-            <Text style={styles.resumeFile}>david_resume.pdf</Text>
+            <Text style={styles.description}>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu
+            </Text>
           </View>
-          <View>
-            <Image
-              style={styles.listAction}
-              source={require("./profileImg/dots.png")}
-            />
+          <View style={styles.contactMethod}>
+            <View style={styles.borderCircle}>
+              <Image
+                style={styles.phone}
+                source={require("./profileImg/phone_1.png")}
+              />
+            </View>
+            <View style={styles.borderCircle}>
+              <Image
+                style={styles.email}
+                source={require("./profileImg/email.png")}
+              />
+            </View>
+            <View style={styles.borderCircle}>
+              <Image
+                style={styles.location}
+                source={require("./profileImg/placeholder.png")}
+              />
+            </View>
+          </View>
+          <View style={styles.myResume}>
+            <View>
+              <Text style={styles.resumeTitle}>My Resume</Text>
+              <Text style={styles.resumeFile}>david_resume.pdf</Text>
+            </View>
+            <View>
+              <Image
+                style={styles.listAction}
+                source={require("./profileImg/dots.png")}
+              />
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.skills}>
-        <Text style={styles.skillTitle}>Skill</Text>
-        <View style={styles.skillList}>
-          <SkillItem activeStrokeColor="orange" value={85} skillName="PHP" />
-          <SkillItem activeStrokeColor="green" value={50} skillName="Java" />
-          <SkillItem activeStrokeColor="blue" value={33} skillName="React" />
+        <View style={styles.skills}>
+          <Text style={styles.skillTitle}>Skill</Text>
+          <View style={styles.skillList}>
+            <SkillItem activeStrokeColor="orange" value={85} skillName="PHP" />
+            <SkillItem activeStrokeColor="green" value={50} skillName="Java" />
+            <SkillItem activeStrokeColor="blue" value={33} skillName="React" />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </MainLayout>
   );
 };
 

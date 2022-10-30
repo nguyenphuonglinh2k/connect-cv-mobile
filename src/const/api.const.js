@@ -21,9 +21,19 @@ export const STT_NOT_FOUND = 404;
 export const STT_INTERNAL_SERVER = 500;
 
 // Auth
-export const POST_SIGN_IN = "/auth/login";
-export const POST_SIGN_UP = "/auth/signup";
+export const POST_SIGN_IN = "/login";
+export const POST_SIGN_UP = "/user/create";
+
+// User
+export const GET_USERS = "/user/get_all";
+export const GET_USER_INFO = "/user/get_info";
+export const PUT_USER_INFO = "/user/update";
 
 // Job
 export const GET_JOBS = "/jobinformation/get_all";
 export const GET_JOB_DETAIL = "/jobinformation/detail_job/{jobId}";
+export const GET_JOBS_OF_COMPANY =
+  "/company/get_job_company?company_id={companyId}";
+
+// Company
+export const GET_COMPANY_DETAIL = "/company/detail_company/{companyId}";

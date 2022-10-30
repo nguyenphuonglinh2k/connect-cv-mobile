@@ -4,6 +4,7 @@ import { RouteName } from "const/path.const";
 import FilterIcon from "icons/FilterIcon";
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import FilterChips from "./FilterChips";
 
 const ResultHeader = () => {
   const navigation = useNavigation();
@@ -23,7 +24,8 @@ const ResultHeader = () => {
           <FilterIcon />
         </IconButton>
       </View>
-      <Text style={styles.subText}>45 Job founded</Text>
+      <Text style={styles.subText}>45 jobs founded</Text>
+      <FilterChips />
     </View>
   );
 };

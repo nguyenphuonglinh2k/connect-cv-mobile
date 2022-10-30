@@ -1,12 +1,8 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, TextInput, Text } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 
-const CommonTextInput = ({
-  style,
-  placeholder,
-  ...otherProps
-}) => {
+const CommonTextInput = ({ style, placeholder, ...otherProps }) => {
   const inputRef = useRef();
 
   return (

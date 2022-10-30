@@ -15,7 +15,6 @@ const FilterScreen = () => {
         <SelectBox label="Location" value="aaaa" />
         <SelectBox label="Salary" value="aaaa" style={styles.mt} />
         <SelectBox label="Career" value="aaaa" style={styles.mt} />
-        <SelectBox label="Ways of working" value="aaaa" style={styles.mt} />
       </View>
     </MainLayout>
   );

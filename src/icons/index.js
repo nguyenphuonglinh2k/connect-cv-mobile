@@ -14,6 +14,10 @@ import ChevronIcon from "./ChevronIcon";
 import StarIcon from "./StarIcon";
 import PhoneIcon from "./PhoneIcon";
 import LocationIcon from "./LocationIcon";
+import CircleXMarkIcon from "./CircleXMarkIcon";
+import CheckIcon from "./CheckIcon";
+import CameraIcon from "./CameraIcon";
+import PencilIcon from "./PencilIcon";
 
 export {
   HomeIcon,
@@ -32,4 +36,8 @@ export {
   StarIcon,
   PhoneIcon,
   LocationIcon,
+  CircleXMarkIcon,
+  CheckIcon,
+  CameraIcon,
+  PencilIcon,
 };

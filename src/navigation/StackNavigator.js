@@ -6,7 +6,7 @@ import {
   HomeScreen,
   JobDetailScreen,
   SignInScreen,
-  SignUp,
+  SignUpScreen,
   SearchScreen,
   FilterScreen,
   Profile,
@@ -21,7 +21,7 @@ const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={RouteName.signIn} component={SignInScreen} />
-      <Stack.Screen name={RouteName.signUp} component={SignUp} />
+      <Stack.Screen name={RouteName.signUp} component={SignUpScreen} />
     </Stack.Navigator>
   );
 };

@@ -5,7 +5,7 @@ import { RouteName } from "const/path.const";
 import {
   HomeScreen,
   JobDetailScreen,
-  SignIn,
+  SignInScreen,
   SignUp,
   SearchScreen,
   FilterScreen,
@@ -20,7 +20,7 @@ const screenOptions = { headerShown: false };
 const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name={RouteName.signIn} component={SignIn} />
+      <Stack.Screen name={RouteName.signIn} component={SignInScreen} />
       <Stack.Screen name={RouteName.signUp} component={SignUp} />
     </Stack.Navigator>
   );

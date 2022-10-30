@@ -4,6 +4,8 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { ToastProvider } from "react-native-toast-notifications";
 import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import { AuthStack } from "./src/navigation/StackNavigator";
+import { useSelector } from "react-redux";
+import { LoadingSpinner } from "components";
 
 const navTheme = {
   ...DefaultTheme,
@@ -16,7 +18,13 @@ const navTheme = {
 
 const App = () => {
   const [splash, setSplash] = useState(true);
-  const isAuth = true;
+
+  const [isLoggedIn, token] = useSelector(({ authRedux }) => [
+    authRedux.isLoggedIn,
+    authRedux.token,
+  ]);
+
+  const isFetching = useSelector(({ authRedux }) => authRedux.isFetching);
 
   useEffect(() => {
     const splashTimeout = setTimeout(() => {
@@ -37,7 +45,9 @@ const App = () => {
         animationType="slide-in"
       >
         <NavigationContainer theme={navTheme}>
-          {isAuth ? <DrawerNavigator /> : <AuthStack />}
+          {isLoggedIn ? <DrawerNavigator /> : <AuthStack />}
+
+          <LoadingSpinner isVisible={isFetching} />
         </NavigationContainer>
       </ToastProvider>
     </SafeAreaProvider>

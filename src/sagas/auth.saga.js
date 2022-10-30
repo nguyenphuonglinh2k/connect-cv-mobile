@@ -5,9 +5,9 @@ import AuthActions from "reduxStore/auth.redux";
 import { toCamel } from "utils/index";
 import clientStorage from "utils/clientStorage";
 
-export function* postLoginRequest() {
+export function* postLoginRequest(action) {
   try {
-    const response = yield call(AuthService.postSignIn);
+    const response = yield call(AuthService.postSignIn, action.data);
 
     if (response.status === ApiConstant.STT_OK) {
       const { accessToken } = toCamel(response.data);
@@ -18,6 +18,7 @@ export function* postLoginRequest() {
       yield put(
         AuthActions.authSuccess({
           token: bearToken,
+          isLoggedIn: true,
         }),
       );
     } else {

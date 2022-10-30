@@ -1,5 +1,5 @@
 import Profile from "./ProfileScreen";
-import SignIn from "./authScreens/SignIn";
+import SignInScreen from "./SignInScreen";
 import SignUp from "./authScreens/SignUp";
 import HomeScreen from "./HomeScreen";
 import JobDetailScreen from "./JobDetailScreen";
@@ -10,7 +10,7 @@ import CompanyDetailScreen from "./CompanyDetailScreen";
 export {
   HomeScreen,
   JobDetailScreen,
-  SignIn,
+  SignInScreen,
   SignUp,
   SearchScreen,
   FilterScreen,

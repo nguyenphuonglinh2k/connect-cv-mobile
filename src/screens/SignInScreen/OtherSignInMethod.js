@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
 const OtherSignInMethod = props => {
   return (
@@ -27,9 +27,9 @@ const OtherSignInMethod = props => {
 
 const LoginItem = ({ uri, style }) => {
   return (
-    <View style={[styles.socialNetwork, style]}>
+    <TouchableOpacity activeOpacity={0.7} style={[styles.socialNetwork, style]}>
       <Image style={{ width: 28, height: 28 }} source={{ uri }} />
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -1,14 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import InfoChips from "./InfoChips";
+import { useNavigation } from "@react-navigation/core";
+import { RouteName, TabName } from "const/path.const";
 
 const Header = ({ data, ...otherProps }) => {
+  const navigation = useNavigation();
+
+  const handleGotoCompanyView = () => {
+    navigation.navigate(TabName.search, { screen: RouteName.companyDetail });
+  };
+
   return (
     <View {...otherProps}>
       <View style={styles.infoWrapper}>
         <View>
-          <Text style={styles.companyName}>{data?.companyName}</Text>
+          <TouchableOpacity onPress={handleGotoCompanyView}>
+            <Text style={styles.companyName}>{data?.companyName}</Text>
+          </TouchableOpacity>
           <Text style={styles.jobName}>{data?.jobName}</Text>
         </View>
         <Image source={{ uri: data?.logo }} style={styles.logo} />

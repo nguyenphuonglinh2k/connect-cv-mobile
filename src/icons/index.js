@@ -18,6 +18,8 @@ import CircleXMarkIcon from "./CircleXMarkIcon";
 import CheckIcon from "./CheckIcon";
 import CameraIcon from "./CameraIcon";
 import PencilIcon from "./PencilIcon";
+import UserIcon from "./UserIcon";
+import EllipseVerticalIcon from "./EllipseVerticalIcon";
 
 export {
   HomeIcon,
@@ -40,4 +42,6 @@ export {
   CheckIcon,
   CameraIcon,
   PencilIcon,
+  UserIcon,
+  EllipseVerticalIcon,
 };

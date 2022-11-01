@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeIcon, SearchIcon, EmailIcon, MenuIcon } from "icons";
+import { HomeIcon, SearchIcon, EmailIcon, UserIcon } from "icons";
 import {
   HomeStack,
   ChatStack,
@@ -58,7 +58,7 @@ export default function TabNavigator() {
         component={ProfileStack}
         options={() => ({
           tabBarIcon: ({ focused }) => (
-            <MenuIcon color={focused ? "#673ab7" : "#A19FA8"} />
+            <UserIcon color={focused ? "#673ab7" : "#A19FA8"} />
           ),
         })}
       />

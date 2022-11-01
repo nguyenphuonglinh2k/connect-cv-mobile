@@ -15,4 +15,5 @@ export const RouteName = {
   signUp: "SignUp",
   profile: "ProfileScreen",
   companyDetail: "CompanyDetailScreen",
+  storedJob: "StoredScreen",
 };

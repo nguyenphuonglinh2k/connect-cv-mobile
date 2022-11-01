@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeIcon, SearchIcon, EmailIcon, UserIcon } from "icons";
+import { HomeIcon, SearchIcon, UserIcon, HeartIcon } from "icons";
 import {
   HomeStack,
-  ChatStack,
+  StoredStack,
   SearchStack,
   ProfileStack,
 } from "./StackNavigator";
@@ -46,10 +46,10 @@ export default function TabNavigator() {
 
       <Tab.Screen
         name={PathConstant.TabName.chat}
-        component={ChatStack}
+        component={StoredStack}
         options={() => ({
           tabBarIcon: ({ focused }) => (
-            <EmailIcon color={focused ? "#673ab7" : "#A19FA8"} />
+            <HeartIcon color={focused ? "#673ab7" : "#A19FA8"} />
           ),
         })}
       />

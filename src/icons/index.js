@@ -20,6 +20,7 @@ import CameraIcon from "./CameraIcon";
 import PencilIcon from "./PencilIcon";
 import UserIcon from "./UserIcon";
 import EllipseVerticalIcon from "./EllipseVerticalIcon";
+import HeartIcon from "./HeartIcon";
 
 export {
   HomeIcon,
@@ -44,4 +45,5 @@ export {
   PencilIcon,
   UserIcon,
   EllipseVerticalIcon,
+  HeartIcon,
 };

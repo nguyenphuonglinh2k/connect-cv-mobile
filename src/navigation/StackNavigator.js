@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RouteName } from "const/path.const";
 import {
@@ -11,6 +10,7 @@ import {
   FilterScreen,
   Profile,
   CompanyDetailScreen,
+  StoredScreen,
 } from "screens";
 
 const Stack = createNativeStackNavigator();
@@ -48,11 +48,11 @@ const SearchStack = () => {
   );
 };
 
-const ChatStack = () => {
+const StoredStack = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Chat</Text>
-    </View>
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name={RouteName.storedJob} component={StoredScreen} />
+    </Stack.Navigator>
   );
 };
 
@@ -64,4 +64,4 @@ const ProfileStack = () => {
   );
 };
 
-export { AuthStack, HomeStack, ChatStack, SearchStack, ProfileStack };
+export { AuthStack, HomeStack, StoredStack, SearchStack, ProfileStack };

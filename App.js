@@ -25,7 +25,8 @@ const App = () => {
   const [isLoggedIn] = useSelector(({ authRedux }) => [authRedux.isLoggedIn]);
 
   const isFetching = useSelector(
-    ({ authRedux, userRedux }) => authRedux.isFetching || userRedux.isFetching,
+    ({ authRedux, userRedux, jobRedux }) =>
+      authRedux.isFetching || userRedux.isFetching || jobRedux.isFetching,
   );
 
   const handleGetUserInfo = useCallback(() => {

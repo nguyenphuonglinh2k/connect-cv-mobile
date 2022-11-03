@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeIcon, SearchIcon, UserIcon, HeartIcon } from "icons";
 import {
@@ -8,10 +8,25 @@ import {
   ProfileStack,
 } from "./StackNavigator";
 import { PathConstant } from "const";
+import { useNavigation } from "@react-navigation/core";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("tabPress", e => {
+      // Prevent default behavior
+      e.preventDefault();
+
+      // Do something manually
+      navigation.popToTop({ immediate: true });
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <Tab.Navigator
       screenOptions={{

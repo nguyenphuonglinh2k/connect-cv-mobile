@@ -11,7 +11,7 @@ import { AuthTypes } from "reduxStore/auth.redux";
 
 /* ------------- Sagas ------------- */
 import { getUserInfoRequest } from "./user.saga";
-import { getJobsRequest } from "./job.saga";
+import { getJobsRequest, getJobDetailRequest } from "./job.saga";
 import { postLoginRequest } from "./auth.saga";
 
 /* ------------- Connect Types To Sagas ------------- */
@@ -25,5 +25,6 @@ export default function* root() {
 
     // Job
     takeLatest(JobTypes.GET_JOBS_REQUEST, getJobsRequest),
+    takeLatest(JobTypes.GET_JOB_DETAIL_REQUEST, getJobDetailRequest),
   ]);
 }

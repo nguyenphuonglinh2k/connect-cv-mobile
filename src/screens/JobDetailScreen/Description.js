@@ -6,13 +6,17 @@ const Description = ({ value }) => {
   return (
     <View style={styles.wrapper}>
       <Text style={styles.title}>Job Description</Text>
-      <Text style={styles.value}>{value}</Text>
+      {value.map((text, index) => (
+        <Text key={index} style={styles.value}>
+          {text}
+        </Text>
+      ))}
     </View>
   );
 };
 
 Description.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.array,
 };
 
 const styles = StyleSheet.create({

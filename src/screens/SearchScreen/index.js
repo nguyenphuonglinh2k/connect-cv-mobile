@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { MainLayout } from "layouts";
 import { StyleSheet, View } from "react-native";
 import SearchInput from "components/SearchInput";
 import JobList from "./JobList";
 import ResultHeader from "./ResultHeader";
+import { useDispatch } from "react-redux";
+import JobActions from "reduxStore/job.redux";
 
 const SearchScreen = () => {
+  const dispatch = useDispatch();
+
   const [searchValue, onChangeSearchValue] = useState("");
+
+  const handleGetJobs = useCallback(() => {
+    dispatch(JobActions.getJobsRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
+    handleGetJobs();
+  }, [handleGetJobs]);
 
   return (
     <MainLayout

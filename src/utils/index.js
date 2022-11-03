@@ -17,6 +17,8 @@ export const toCamel = obj => {
     return obj.map(function (item) {
       if (typeof item === "object") {
         value = toCamel(item);
+      } else if (typeof item === "string") {
+        value = item;
       }
       return value;
     });

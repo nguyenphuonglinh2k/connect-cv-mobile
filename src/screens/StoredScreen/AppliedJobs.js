@@ -1,18 +1,23 @@
 import CardJobItem from "components/CardJobItem";
 import React from "react";
+import PropTypes from "prop-types";
 import { FlatList, StyleSheet } from "react-native";
 
-const AppliedJobs = props => {
+const AppliedJobs = ({ data, ...otherProps }) => {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
-      data={MOCK_DATA}
+      data={data || MOCK_DATA}
       renderItem={({ item }) => <CardJobItem data={item} style={styles.item} />}
       keyExtractor={(_, i) => i}
       contentContainerStyle={styles.container}
-      {...props}
+      {...otherProps}
     />
   );
+};
+
+AppliedJobs.propTypes = {
+  data: PropTypes.array,
 };
 
 const MOCK_DATA = Array.from(new Array(5)).map(() => ({

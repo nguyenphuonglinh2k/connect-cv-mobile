@@ -1,11 +1,14 @@
 import CardJobItem from "components/CardJobItem";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const JobList = props => {
+  const jobs = useSelector(({ jobRedux }) => jobRedux.jobs);
+
   return (
     <View {...props}>
-      {MOCK_DATA.map((item, index) => (
+      {jobs.map((item, index) => (
         <CardJobItem
           key={index}
           data={item}
@@ -15,14 +18,6 @@ const JobList = props => {
     </View>
   );
 };
-
-const MOCK_DATA = Array.from(new Array(5)).map(() => ({
-  logo: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/logo/company-logo1.png",
-  companyName: "Highspeed Studios",
-  jobName: "Software Engineer",
-  salary: "$500 - $1,000",
-  location: "Jakarta, Indonesia",
-}));
 
 const styles = StyleSheet.create({
   item: {

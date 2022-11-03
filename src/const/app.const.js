@@ -30,3 +30,6 @@ export const SALARY_TYPES = [
 
 export const DEFAULT_AVATAR_URL =
   "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/author/pic1.png";
+
+export const DEFAULT_COMPANY_LOGO =
+  "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/logo/logo.png";

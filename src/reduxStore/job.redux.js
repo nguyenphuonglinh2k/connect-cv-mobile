@@ -3,6 +3,7 @@ import { createReducer, createActions } from "reduxsauce";
 /* ------------- Types and Action Creators ------------- */
 const { Types, Creators } = createActions({
   getJobsRequest: [],
+  getJobDetailRequest: ["data"],
 
   jobSuccess: ["data"],
   jobFailure: ["data"],
@@ -19,6 +20,10 @@ export const INITIAL_STATE = {
   status: null,
 
   jobs: [],
+  pageSize: null,
+  total: null,
+
+  job: {},
 };
 
 /* ------------- Reducers ------------- */
@@ -48,6 +53,7 @@ export const reset = () => INITIAL_STATE;
 /* ------------- Mapping ------------- */
 export const HANDLERS = {
   [Types.GET_JOBS_REQUEST]: request,
+  [Types.GET_JOB_DETAIL_REQUEST]: request,
 
   [Types.JOB_SUCCESS]: success,
   [Types.JOB_FAILURE]: failure,

@@ -5,12 +5,16 @@ import CoinIcon from "icons/CoinIcon";
 import BagIcon from "icons/BagIcon";
 import { useNavigation } from "@react-navigation/core";
 import { RouteName, TabName } from "const/path.const";
+import { DEFAULT_COMPANY_LOGO } from "const/app.const";
 
 const CardJobItem = ({ data, style, ...otherProps }) => {
   const navigation = useNavigation();
 
   const handleGotoDetail = () => {
-    navigation.navigate(TabName.search, { screen: RouteName.jobDetail });
+    navigation.navigate(TabName.search, {
+      screen: RouteName.jobDetail,
+      params: { jobId: data?.id },
+    });
   };
 
   return (
@@ -20,17 +24,23 @@ const CardJobItem = ({ data, style, ...otherProps }) => {
       onPress={handleGotoDetail}
       {...otherProps}
     >
-      <Image source={{ uri: data?.logo }} style={styles.logo} />
+      <Image
+        source={{ uri: data?.logo || DEFAULT_COMPANY_LOGO }}
+        style={styles.logo}
+      />
       <View style={{ flex: 1 }}>
-        <Text style={styles.companyName}>{data?.companyName}</Text>
-        <Text style={styles.jobName}>{data?.jobName}</Text>
+        <Text style={styles.companyName}>{data?.company}</Text>
+        <Text style={styles.jobName}>{data?.name}</Text>
 
         <IconTextRow
           icon={<CoinIcon />}
-          value={data?.salary}
+          value={data?.jobDetails[0]?.generalInformation?.salary}
           style={{ marginBottom: 8 }}
         />
-        <IconTextRow icon={<BagIcon />} value={data?.location} />
+        <IconTextRow
+          icon={<BagIcon />}
+          value={data?.jobDetails[0]?.location.join("")}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -55,10 +65,10 @@ IconTextRow.propTypes = {
 CardJobItem.propTypes = {
   data: PropTypes.shape({
     logo: PropTypes.string,
-    companyName: PropTypes.string,
-    jobName: PropTypes.string,
-    salary: PropTypes.string,
-    location: PropTypes.string,
+    company: PropTypes.string,
+    name: PropTypes.string,
+    jobDetails: PropTypes.array,
+    id: PropTypes.any,
   }),
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };

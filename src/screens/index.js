@@ -7,6 +7,10 @@ import SearchScreen from "./SearchScreen";
 import FilterScreen from "./FilterScreen";
 import CompanyDetailScreen from "./CompanyDetailScreen";
 import StoredScreen from "./StoredScreen";
+import EditProfileScreen from "./EditProfileScreen";
+import RoleOptionScreen from "./RoleOptionScreen";
+import GetStartedScreen from "./GetStartedScreen";
+import AvailableJobsScreen from "./AvailableJobsScreen";
 
 export {
   HomeScreen,
@@ -18,4 +22,8 @@ export {
   Profile,
   CompanyDetailScreen,
   StoredScreen,
+  EditProfileScreen,
+  RoleOptionScreen,
+  GetStartedScreen,
+  AvailableJobsScreen,
 };

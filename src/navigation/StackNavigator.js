@@ -11,6 +11,10 @@ import {
   Profile,
   CompanyDetailScreen,
   StoredScreen,
+  EditProfileScreen,
+  RoleOptionScreen,
+  GetStartedScreen,
+  AvailableJobsScreen,
 } from "screens";
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +24,9 @@ const screenOptions = { headerShown: false };
 const AuthStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name={RouteName.getStarted} component={GetStartedScreen} />
+
+      <Stack.Screen name={RouteName.roleOption} component={RoleOptionScreen} />
       <Stack.Screen name={RouteName.signIn} component={SignInScreen} />
       <Stack.Screen name={RouteName.signUp} component={SignUpScreen} />
     </Stack.Navigator>
@@ -44,6 +51,10 @@ const SearchStack = () => {
       />
       <Stack.Screen name={RouteName.jobDetail} component={JobDetailScreen} />
       <Stack.Screen name={RouteName.filter} component={FilterScreen} />
+      <Stack.Screen
+        name={RouteName.availableJobs}
+        component={AvailableJobsScreen}
+      />
     </Stack.Navigator>
   );
 };
@@ -60,6 +71,10 @@ const ProfileStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={RouteName.profile} component={Profile} />
+      <Stack.Screen
+        name={RouteName.editProfile}
+        component={EditProfileScreen}
+      />
     </Stack.Navigator>
   );
 };

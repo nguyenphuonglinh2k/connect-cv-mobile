@@ -4,8 +4,12 @@ import Header from "layouts/MainLayout/Header";
 import LinearGradient from "react-native-linear-gradient";
 import { IconButton } from "components/common";
 import { SearchInput } from "components";
+import { useSelector } from "react-redux";
+import { DEFAULT_AVATAR_URL } from "const/app.const";
 
 const Banner = () => {
+  const user = useSelector(({ userRedux }) => userRedux.user);
+
   return (
     <View>
       <LinearGradient
@@ -18,14 +22,14 @@ const Banner = () => {
         <View style={styles.info}>
           <View>
             <Text style={styles.greet}>Welcome Back</Text>
-            <Text style={styles.name}>Henry Kanwil</Text>
+            <Text style={styles.name}>{user?.fullname}</Text>
           </View>
 
           <IconButton>
             <Image
               style={styles.avatar}
               source={{
-                uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/author/pic1.png",
+                uri: user.avatarUrl || DEFAULT_AVATAR_URL,
               }}
             />
           </IconButton>

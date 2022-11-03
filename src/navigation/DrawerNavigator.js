@@ -8,8 +8,9 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { TextButton } from "components/common";
 import clientStorage from "utils/clientStorage";
 import { AppConstant } from "const/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AuthActions from "reduxStore/auth.redux";
+import { DEFAULT_AVATAR_URL } from "const/app.const";
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +30,8 @@ const DrawerNavigator = () => {
 
 const CustomDrawerContent = props => {
   const dispatch = useDispatch();
+
+  const user = useSelector(({ userRedux }) => userRedux.user);
 
   const handleLogout = () => {
     dispatch(
@@ -52,12 +55,12 @@ const CustomDrawerContent = props => {
         <Image
           style={styles.avatar}
           source={{
-            uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/author/pic1.png",
+            uri: user?.avatarUrl || DEFAULT_AVATAR_URL,
           }}
         />
         <View>
           <Text style={styles.greet}>Good Morning</Text>
-          <Text style={styles.name}>Henry Kanwil</Text>
+          <Text style={styles.name}>{user?.fullname}</Text>
         </View>
       </View>
 

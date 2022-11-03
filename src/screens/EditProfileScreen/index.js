@@ -8,7 +8,9 @@ import { CheckIcon } from "icons";
 const EditProfileScreen = () => {
   const ref = useRef();
 
-  const [imageUri, setImageUri] = useState();
+  const [imageUri, setImageUri] = useState(
+    "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/message/pic3.jpg",
+  );
 
   const onSaveChange = () => {
     ref.current.props.onPress(imageUri);
@@ -26,7 +28,7 @@ const EditProfileScreen = () => {
         ),
       }}
     >
-      <ScrollView style={{ flex: 1, padding: 16 }}>
+      <ScrollView style={{ flex: 1, padding: 15 }}>
         <AvatarChange
           imageUri={imageUri}
           setImageUri={setImageUri}

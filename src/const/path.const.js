@@ -16,4 +16,8 @@ export const RouteName = {
   profile: "ProfileScreen",
   companyDetail: "CompanyDetailScreen",
   storedJob: "StoredScreen",
+  editProfile: "EditProfileScreen",
+  roleOption: "RoleOptionScreen",
+  getStarted: "GetStartedScreen",
+  availableJobs: "AvailableJobsScreen",
 };

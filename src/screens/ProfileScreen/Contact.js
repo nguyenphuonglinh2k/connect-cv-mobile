@@ -4,22 +4,25 @@ import { StyleSheet, Text, View } from "react-native";
 import PhoneIcon from "icons/PhoneIcon";
 import EmailIcon from "icons/EmailIcon";
 import LocationIcon from "icons/LocationIcon";
+import { useSelector } from "react-redux";
 
 const Contact = () => {
+  const user = useSelector(({ userRedux }) => userRedux.user);
+
   return (
     <View style={styles.wrapper}>
-      <ContactItem
-        title="Telephone"
-        value="+51 632 445 556"
-        icon={<PhoneIcon />}
-      />
+      <ContactItem title="Telephone" value={user?.phone} icon={<PhoneIcon />} />
       <ContactItem
         title="Email"
-        value="highspeedst@mail.com"
+        value={user?.email}
         icon={<EmailIcon color="#40189D" />}
         style={styles.marginVertical}
       />
-      <ContactItem title="Address" value="Ha Noi" icon={<LocationIcon />} />
+      <ContactItem
+        title="Address"
+        value={user?.address}
+        icon={<LocationIcon />}
+      />
     </View>
   );
 };

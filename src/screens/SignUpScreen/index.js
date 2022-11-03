@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import { CommonTextInput, CommonButton } from "components";
+import { CommonTextInput, CommonButton, LoadingSpinner } from "components";
 import Banner from "./Banner";
 import BottomButton from "./BottomButton";
 import { useToast } from "react-native-toast-notifications";
@@ -17,7 +17,10 @@ const SignUpScreen = () => {
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSignUp = async () => {
+    setIsLoading(true);
     try {
       const response = await AuthService.postSignUp({
         username,
@@ -31,6 +34,8 @@ const SignUpScreen = () => {
       }
     } catch (error) {
       toast.show("Something went wrong", { type: "danger" });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -69,6 +74,7 @@ const SignUpScreen = () => {
       </ScrollView>
 
       <BottomButton />
+      {isLoading && <LoadingSpinner />}
     </View>
   );
 };

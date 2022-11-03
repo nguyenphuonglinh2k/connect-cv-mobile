@@ -11,8 +11,8 @@ import { TextButton } from "components/common";
 const SignInScreen = () => {
   const dispatch = useDispatch();
 
-  const [username, onChangeUsername] = useState("admin");
-  const [password, onChangePassword] = useState("admin");
+  const [username, onChangeUsername] = useState("user1");
+  const [password, onChangePassword] = useState("123456");
 
   const onLogin = () => {
     dispatch(

@@ -1,7 +1,11 @@
+import { DEFAULT_AVATAR_URL } from "const/app.const";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const About = () => {
+  const user = useSelector(({ userRedux }) => userRedux.user);
+
   return (
     <View style={{ marginBottom: -35 }}>
       <Image
@@ -14,14 +18,13 @@ const About = () => {
         <Image
           style={styles.avatar}
           source={{
-            uri: "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/message/pic6.jpg",
+            uri: user.avatarUrl || DEFAULT_AVATAR_URL,
           }}
         />
-        <Text style={styles.name}>David</Text>
-        <Text style={styles.position}>Programmer</Text>
+        <Text style={styles.name}>{user?.fullname}</Text>
+        <Text style={styles.position}>{user?.position || "Undefined"}</Text>
         <Text style={styles.description}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu
+          {user?.about || "Let's write something about yourself"}
         </Text>
       </View>
     </View>

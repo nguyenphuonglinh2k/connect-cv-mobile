@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { ToastProvider } from "react-native-toast-notifications";
 import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import { AuthStack } from "./src/navigation/StackNavigator";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoadingSpinner } from "components";
+import UserActions from "reduxStore/user.redux";
 
 const navTheme = {
   ...DefaultTheme,
@@ -17,14 +18,25 @@ const navTheme = {
 };
 
 const App = () => {
+  const dispatch = useDispatch();
+
   const [splash, setSplash] = useState(true);
 
-  const [isLoggedIn, token] = useSelector(({ authRedux }) => [
-    authRedux.isLoggedIn,
-    authRedux.token,
-  ]);
+  const [isLoggedIn] = useSelector(({ authRedux }) => [authRedux.isLoggedIn]);
 
-  const isFetching = useSelector(({ authRedux }) => authRedux.isFetching);
+  const isFetching = useSelector(
+    ({ authRedux, userRedux }) => authRedux.isFetching || userRedux.isFetching,
+  );
+
+  const handleGetUserInfo = useCallback(() => {
+    dispatch(UserActions.getUserInfoRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      handleGetUserInfo();
+    }
+  }, [isLoggedIn, handleGetUserInfo]);
 
   useEffect(() => {
     const splashTimeout = setTimeout(() => {

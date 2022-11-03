@@ -2,11 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import ArrowIcon from "icons/ArrowIcon";
+import { useNavigation } from "@react-navigation/core";
+import { RouteName } from "const/path.const";
 
 const SeeJobAction = ({ style, ...otherProps }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate(RouteName.availableJobs, {
+      companyName: "Highspeed Studios",
+    });
+  };
+
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={[styles.button, style]} {...otherProps}>
+      <TouchableOpacity
+        style={[styles.button, style]}
+        onPress={handlePress}
+        {...otherProps}
+      >
         <Text style={styles.label}>{`21 Available Jobs`}</Text>
         <ArrowIcon style={styles.icon} color="white" />
       </TouchableOpacity>

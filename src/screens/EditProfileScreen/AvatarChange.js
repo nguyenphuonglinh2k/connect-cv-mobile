@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import PropTypes from "prop-types";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { CameraIcon } from "icons";
-import { useSelector } from "react-redux";
 import { LoadingSpinner } from "components";
 import { getUploadFormData, toCamel } from "utils";
 import { useToast } from "react-native-toast-notifications";
 import DocumentPicker from "react-native-document-picker";
 import { ApiConstant } from "const";
 import { UserService } from "services";
-import { useIsFocused } from "@react-navigation/native";
 
 const AvatarChange = ({ imageUri, setImageUri, style = {}, ...otherProps }) => {
   const toast = useToast();
-  const isFocused = useIsFocused();
-
-  // TODO
-  const userInfo = useSelector(({ userRedux }) => ({
-    userImageUrl:
-      "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/message/pic6.jpg",
-  }));
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,11 +39,6 @@ const AvatarChange = ({ imageUri, setImageUri, style = {}, ...otherProps }) => {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (!isFocused) return;
-    setImageUri(userInfo.userImageUrl);
-  }, [userInfo, isFocused, setImageUri]);
 
   return (
     <TouchableOpacity
@@ -106,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AvatarChange;
+export default memo(AvatarChange);

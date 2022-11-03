@@ -27,3 +27,6 @@ export const SALARY_TYPES = [
   { id: "30-50", label: "30-50" },
   { id: ">50", label: ">50" },
 ];
+
+export const DEFAULT_AVATAR_URL =
+  "https://jobie.dexignzone.com/mobile-app/xhtml/assets/images/author/pic1.png";

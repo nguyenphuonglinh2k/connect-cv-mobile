@@ -1,14 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { CommonChip } from "components/common";
+import { useSelector } from "react-redux";
 
 const Skills = () => {
+  const user = useSelector(({ userRedux }) => userRedux.user);
+
   return (
     <View style={styles.wrapper}>
       <Text style={styles.title}>Skills</Text>
 
       <View style={styles.list}>
-        {SKILLS.map((item, index) => (
+        {(user?.skills || []).map((item, index) => (
           <CommonChip
             key={index}
             label={item}

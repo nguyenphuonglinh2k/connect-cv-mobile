@@ -10,6 +10,11 @@ import { DEFAULT_COMPANY_LOGO } from "const/app.const";
 const CardJobItem = ({ data, style, ...otherProps }) => {
   const navigation = useNavigation();
 
+  const salary =
+    data?.jobDetails[0]?.generalInformation?.salary === "Thỏa thuận"
+      ? data?.jobDetails[0]?.generalInformation?.salary
+      : `${data?.jobDetails[0]?.generalInformation?.salary}tr`;
+
   const handleGotoDetail = () => {
     navigation.navigate(TabName.search, {
       screen: RouteName.jobDetail,
@@ -34,7 +39,7 @@ const CardJobItem = ({ data, style, ...otherProps }) => {
 
         <IconTextRow
           icon={<CoinIcon />}
-          value={data?.jobDetails[0]?.generalInformation?.salary}
+          value={salary}
           style={{ marginBottom: 8 }}
         />
         <IconTextRow

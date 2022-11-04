@@ -5,16 +5,17 @@ import { useSelector } from "react-redux";
 
 const Skills = () => {
   const user = useSelector(({ userRedux }) => userRedux.user);
+  const skills = JSON.parse(user?.skills) || [];
 
   return (
     <View style={styles.wrapper}>
       <Text style={styles.title}>Skills</Text>
 
       <View style={styles.list}>
-        {!user?.skills?.length ? (
+        {!skills.length ? (
           <Text>{`Let's update your skills`}</Text>
         ) : (
-          (user?.skills || []).map((item, index) => (
+          skills.map((item, index) => (
             <CommonChip
               key={index}
               label={item}

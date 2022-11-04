@@ -14,7 +14,7 @@ const JobDetailScreen = () => {
   const route = useRoute();
   const jobId = route.params.jobId;
 
-  const job = useSelector(({ jobRedux }) => jobRedux.job || {});
+  const job = useSelector(({ jobRedux }) => jobRedux.job);
 
   const salary = useMemo(() => {
     if (!job.jobDetails) return "Thỏa thuận";

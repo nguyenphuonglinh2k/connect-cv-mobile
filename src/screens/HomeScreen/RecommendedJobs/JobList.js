@@ -1,3 +1,4 @@
+import { useIsFocused } from "@react-navigation/core";
 import CardJobItem from "components/CardJobItem";
 import React, { useEffect, useCallback } from "react";
 import { StyleSheet, View } from "react-native";
@@ -6,6 +7,7 @@ import JobActions from "reduxStore/job.redux";
 
 const JobList = props => {
   const dispatch = useDispatch();
+  const isFocused = useIsFocused();
 
   const recommendedJobs = useSelector(
     ({ jobRedux }) => jobRedux.recommendedJobs,
@@ -16,8 +18,10 @@ const JobList = props => {
   }, [dispatch]);
 
   useEffect(() => {
-    handleGetRecommendedJobs();
-  }, [handleGetRecommendedJobs]);
+    if (isFocused) {
+      handleGetRecommendedJobs();
+    }
+  }, [handleGetRecommendedJobs, isFocused]);
 
   return (
     <View {...props}>

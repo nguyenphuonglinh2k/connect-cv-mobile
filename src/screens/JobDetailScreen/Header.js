@@ -31,10 +31,12 @@ const Header = ({ data, ...otherProps }) => {
         />
       </View>
 
-      <InfoChips data={data?.chips || []} />
+      <InfoChips data={data?.chips || MOCK_CHIPS} />
     </View>
   );
 };
+
+const MOCK_CHIPS = ["Fulltime", "Remote working"];
 
 Header.propTypes = {
   data: PropTypes.shape({

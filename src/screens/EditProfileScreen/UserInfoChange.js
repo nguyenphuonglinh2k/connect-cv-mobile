@@ -41,9 +41,10 @@ const UserInfoChange = forwardRef((props, ref) => {
         phone,
         position,
         fullname: name,
-        resumeUrl: `${resume.name} ${resume.url}`,
+        resumeUrl: resume.name ? `${resume.name} ${resume.url}` : null,
         avatar_url: imageSrc,
-        skills: [],
+        skills: "[]",
+        email,
       };
 
       try {
@@ -59,7 +60,7 @@ const UserInfoChange = forwardRef((props, ref) => {
         setIsLoading(false);
       }
     },
-    [about, address, name, navigation, phone, position, resume, toast],
+    [about, address, name, navigation, phone, position, resume, toast, email],
   );
 
   useEffect(() => {

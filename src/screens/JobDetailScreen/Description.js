@@ -6,7 +6,7 @@ const Description = ({ value }) => {
   return (
     <View style={styles.wrapper}>
       <Text style={styles.title}>Job Description</Text>
-      {value.map((text, index) => (
+      {(value || []).map((text, index) => (
         <Text key={index} style={styles.value}>
           {text}
         </Text>

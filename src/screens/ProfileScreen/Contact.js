@@ -11,7 +11,11 @@ const Contact = () => {
 
   return (
     <View style={styles.wrapper}>
-      <ContactItem title="Telephone" value={user?.phone} icon={<PhoneIcon />} />
+      <ContactItem
+        title="Telephone"
+        value={user?.phone || "+0123456789"}
+        icon={<PhoneIcon />}
+      />
       <ContactItem
         title="Email"
         value={user?.email}
@@ -20,7 +24,7 @@ const Contact = () => {
       />
       <ContactItem
         title="Address"
-        value={user?.address}
+        value={user?.address || "No where"}
         icon={<LocationIcon />}
       />
     </View>

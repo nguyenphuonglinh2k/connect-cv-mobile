@@ -15,6 +15,7 @@ import {
   getJobsRequest,
   getJobDetailRequest,
   getRecommendedJobsRequest,
+  getSearchedJobsRequest,
 } from "./job.saga";
 import { postLoginRequest } from "./auth.saga";
 
@@ -34,5 +35,6 @@ export default function* root() {
       JobTypes.GET_RECOMMENDED_JOBS_REQUEST,
       getRecommendedJobsRequest,
     ),
+    takeLatest(JobTypes.GET_SEARCHED_JOBS_REQUEST, getSearchedJobsRequest),
   ]);
 }

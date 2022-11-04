@@ -2,6 +2,7 @@ import React from "react";
 import { MainLayout } from "layouts";
 import { StyleSheet, View } from "react-native";
 import SelectBox from "./SelectBox";
+import Actions from "./Actions";
 
 const FilterScreen = () => {
   return (
@@ -16,6 +17,7 @@ const FilterScreen = () => {
         <SelectBox label="Salary" value="aaaa" style={styles.mt} />
         <SelectBox label="Career" value="aaaa" style={styles.mt} />
       </View>
+      <Actions />
     </MainLayout>
   );
 };

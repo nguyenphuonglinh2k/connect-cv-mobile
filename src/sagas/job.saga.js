@@ -26,6 +26,30 @@ export function* getJobsRequest() {
   }
 }
 
+export function* getSearchedJobsRequest(action) {
+  const params = action.data;
+
+  try {
+    const response = yield call(JobService.getSavedJobs, params);
+
+    if (response.status === ApiConstant.STT_OK) {
+      const responseData = toCamel(response.data.data);
+
+      yield put(
+        JobActions.jobSuccess({
+          jobs: responseData.data,
+          pageSize: responseData.resultPerPage,
+          total: responseData.total,
+        }),
+      );
+    } else {
+      yield put(JobActions.jobFailure(response.data));
+    }
+  } catch (error) {
+    yield put(JobActions.jobFailure(error));
+  }
+}
+
 export function* getJobDetailRequest(action) {
   const { jobId } = action.data;
 

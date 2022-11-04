@@ -41,6 +41,20 @@ export const getSavedJobs = async () => {
   });
 };
 
+export const getSearchedJobs = params => {
+  return Api.get(ApiConstant.GET_SEARCHED_JOBS, params);
+};
+
+export const postCheckSavedJob = async data => {
+  const token = await clientStorage.get(AppConstant.AUTH_TOKEN_KEY);
+
+  return Api.post(ApiConstant.POST_CHECK_SAVED_JOB, data, {
+    headers: {
+      authorization: axiosConfig.headers.authorization || token,
+    },
+  });
+};
+
 export const postSavedJob = async data => {
   const token = await clientStorage.get(AppConstant.AUTH_TOKEN_KEY);
 

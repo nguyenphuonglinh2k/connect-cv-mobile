@@ -13,7 +13,7 @@ const SearchScreen = () => {
   const [searchValue, onChangeSearchValue] = useState("");
 
   const handleGetJobs = useCallback(() => {
-    dispatch(JobActions.getJobsRequest());
+    dispatch(JobActions.getJobsRequest()); //getSearchedJobsRequest
   }, [dispatch]);
 
   useEffect(() => {

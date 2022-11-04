@@ -36,7 +36,19 @@ const StoredScreen = () => {
       if (response.data?.status === ApiConstant.STT_OK) {
         const responseData = toCamel(response.data.data);
 
-        setData(responseData);
+        const formattedData = responseData.map(item => ({
+          ...item,
+          id: item.jobId,
+          company: item.comapy,
+          jobDetails: [
+            {
+              location: item.location,
+              generalInformation: { salary: item.salary },
+            },
+          ],
+        }));
+
+        setData(formattedData);
       }
     } catch (error) {
       toast.show("Something went wrong", { type: "danger" });
@@ -78,7 +90,7 @@ const StoredScreen = () => {
           <AppliedJobs data={data} />
         )}
         {selectedTab === STORE_JOB_TAB_VALUES.saved && (
-          <SavedJobs data={data} />
+          <SavedJobs data={data} onRefetchData={handleGetData} />
         )}
       </View>
 

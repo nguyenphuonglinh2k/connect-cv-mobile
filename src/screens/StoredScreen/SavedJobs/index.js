@@ -3,12 +3,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FlatList, StyleSheet } from "react-native";
 
-const SavedJobs = ({ data, ...otherProps }) => {
+const SavedJobs = ({ data, onRefetchData, ...otherProps }) => {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
       data={data || MOCK_DATA}
-      renderItem={({ item }) => <CardJobItem data={item} style={styles.item} />}
+      renderItem={({ item }) => (
+        <CardJobItem
+          data={item}
+          style={styles.item}
+          onRefetchData={onRefetchData}
+        />
+      )}
       keyExtractor={(_, i) => i}
       contentContainerStyle={styles.container}
       {...otherProps}
@@ -18,6 +24,7 @@ const SavedJobs = ({ data, ...otherProps }) => {
 
 SavedJobs.propTypes = {
   data: PropTypes.array,
+  onRefetchData: PropTypes.func,
 };
 
 const MOCK_DATA = Array.from(new Array(5)).map(() => ({

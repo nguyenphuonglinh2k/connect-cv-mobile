@@ -43,7 +43,10 @@ const HomeStack = () => {
 
 const SearchStack = () => {
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
+    <Stack.Navigator
+      screenOptions={screenOptions}
+      initialRouteName={RouteName.search}
+    >
       <Stack.Screen name={RouteName.search} component={SearchScreen} />
       <Stack.Screen
         name={RouteName.companyDetail}

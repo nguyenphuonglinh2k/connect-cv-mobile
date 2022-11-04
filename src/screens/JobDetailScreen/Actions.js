@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import BookmarkIcon from "icons/BookmarkIcon";
@@ -20,8 +20,8 @@ const Actions = ({ jobId, saved }) => {
         job_id: jobId,
       });
 
-      if (response.status === ApiConstant.STT_OK) {
-        toast.show("Apply job successfully", { type: "danger" });
+      if (response?.data?.status === ApiConstant.STT_OK) {
+        toast.show("Apply job successfully", { type: "success" });
       }
     } catch (error) {
       toast.show("Something went wrong", { type: "danger" });
@@ -38,7 +38,8 @@ const Actions = ({ jobId, saved }) => {
       });
 
       if (response.status === ApiConstant.STT_OK) {
-        toast.show("Saved job successfully", { type: "danger" });
+        toast.show("Saved job successfully", { type: "success" });
+        setIsSaved(true);
       }
     } catch (error) {
       toast.show("Something went wrong", { type: "danger" });
@@ -55,7 +56,8 @@ const Actions = ({ jobId, saved }) => {
       });
 
       if (response.status === ApiConstant.STT_OK) {
-        toast.show("Saved job successfully", { type: "danger" });
+        toast.show("Unsaved job successfully", { type: "success" });
+        setIsSaved(false);
       }
     } catch (error) {
       toast.show("Something went wrong", { type: "danger" });
@@ -70,8 +72,11 @@ const Actions = ({ jobId, saved }) => {
     } else {
       await handleSavedJob();
     }
-    setIsSaved(!isSaved);
   };
+
+  useEffect(() => {
+    setIsSaved(saved);
+  }, [saved]);
 
   return (
     <>
@@ -91,6 +96,10 @@ const Actions = ({ jobId, saved }) => {
 Actions.propTypes = {
   jobId: PropTypes.any,
   saved: PropTypes.bool,
+};
+
+Actions.defaultProps = {
+  saved: false,
 };
 
 const styles = StyleSheet.create({

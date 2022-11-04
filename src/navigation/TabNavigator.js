@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeIcon, SearchIcon, UserIcon, HeartIcon } from "icons";
 import {
@@ -9,23 +9,23 @@ import {
 } from "./StackNavigator";
 import { PathConstant } from "const";
 import { useNavigation } from "@react-navigation/core";
+import { RouteName, TabName } from "const/path.const";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener("tabPress", e => {
-      // Prevent default behavior
+  const onPressTab = (tabName, screenName, params) => {
+    return e => {
+      // Prevent default action
       e.preventDefault();
-
-      // Do something manually
-      navigation.popToTop({ immediate: true });
-    });
-
-    return unsubscribe;
-  }, [navigation]);
+      navigation.navigate(tabName, {
+        screen: screenName,
+        params,
+      });
+    };
+  };
 
   return (
     <Tab.Navigator
@@ -53,10 +53,12 @@ export default function TabNavigator() {
         name={PathConstant.TabName.search}
         component={SearchStack}
         options={() => ({
-          unmountOnBlur: true,
           tabBarIcon: ({ focused }) => (
             <SearchIcon color={focused ? "#673ab7" : "#A19FA8"} />
           ),
+        })}
+        listeners={() => ({
+          tabPress: onPressTab(TabName.search, RouteName.search),
         })}
       />
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { MainLayout } from "layouts";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import SearchInput from "components/SearchInput";
 import TabBar, { STORE_JOB_TAB_VALUES } from "./TabBar";
 import AppliedJobs from "./AppliedJobs";
@@ -69,6 +69,10 @@ const StoredScreen = () => {
       </View>
       <TabBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
 
+      {!data?.length && (
+        <Text style={styles.text}>You have nothing at here!</Text>
+      )}
+
       <View style={{ flex: 1 }}>
         {selectedTab === STORE_JOB_TAB_VALUES.applied && (
           <AppliedJobs data={data} />
@@ -78,7 +82,7 @@ const StoredScreen = () => {
         )}
       </View>
 
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner isVisible />}
     </MainLayout>
   );
 };
@@ -86,6 +90,11 @@ const StoredScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     padding: 15,
+  },
+  text: {
+    color: "#7e7e7e",
+    textAlign: "center",
+    marginTop: 10,
   },
 });
 

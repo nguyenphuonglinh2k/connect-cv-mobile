@@ -1,14 +1,27 @@
 import CardJobItem from "components/CardJobItem";
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import JobActions from "reduxStore/job.redux";
 
 const JobList = props => {
-  const jobs = useSelector(({ jobRedux }) => jobRedux.jobs);
+  const dispatch = useDispatch();
+
+  const recommendedJobs = useSelector(
+    ({ jobRedux }) => jobRedux.recommendedJobs,
+  );
+
+  const handleGetRecommendedJobs = useCallback(() => {
+    dispatch(JobActions.getRecommendedJobsRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
+    handleGetRecommendedJobs();
+  }, [handleGetRecommendedJobs]);
 
   return (
     <View {...props}>
-      {jobs.map((item, index) => (
+      {recommendedJobs.map((item, index) => (
         <CardJobItem
           key={index}
           data={item}

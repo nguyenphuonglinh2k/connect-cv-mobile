@@ -39,6 +39,7 @@ export const GET_APPLIED_JOBS = "/jobinformation/get";
 export const GET_SAVED_JOBS = "/saveJob/get";
 export const POST_SAVE_JOB = "/saveJob/create";
 export const DELETE_SAVED_JOB = "/saveJob/detele";
+export const GET_RECOMMENDED_JOBS = "/jobinformation/get_random";
 
 // Company
 export const GET_COMPANY_DETAIL = "/company/detail_company/{companyId}";

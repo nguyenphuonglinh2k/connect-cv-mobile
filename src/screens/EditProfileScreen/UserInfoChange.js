@@ -3,18 +3,16 @@ import PropTypes from "prop-types";
 import { StyleSheet, Text, View } from "react-native";
 import { CommonTextInput } from "components";
 import { TouchableOpacity as TouchableOpacityGesture } from "react-native-gesture-handler";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { UserService } from "services";
 import { ApiConstant } from "const";
 import { LoadingSpinner } from "components";
-import UserActions from "reduxStore/user.redux";
-import AuthActions from "reduxStore/auth.redux";
 import { useToast } from "react-native-toast-notifications";
+import UploadResume from "./UploadResume";
 
 const UserInfoChange = forwardRef((props, ref) => {
   const isFocused = useIsFocused();
-  const dispatch = useDispatch();
   const navigation = useNavigation();
   const toast = useToast();
 
@@ -28,44 +26,59 @@ const UserInfoChange = forwardRef((props, ref) => {
   const [email, onChangeEmail] = useState("");
   const [address, onChangeAddress] = useState("");
 
+  const [resume, onChangeResume] = useState({ name: "", url: "" });
+  const [skills, onChangeSkills] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
-  const onUpdateInfo = useCallback(async imageSrc => {
-    // setIsLoading(true);
-    // const response = await UserService.putUserInfo(userInfo._id, {
-    //   name,
-    //   imageSrc,
-    // });
-    // if (response.status === ApiConstant.STT_OK) {
-    //   dispatch(
-    //     UserActions.userSuccess({
-    //       user: {
-    //         ...userInfo,
-    //         name,
-    //         userImageUrl: imageSrc,
-    //       },
-    //     }),
-    //   );
-    //   dispatch(
-    //     AuthActions.authSuccess({
-    //       user: {
-    //         ...userInfo,
-    //         name,
-    //         userImageUrl: imageSrc,
-    //       },
-    //     }),
-    //   );
-    //   toast.show("Update info successfully", { type: "success" });
-    //   navigation.goBack();
-    // }
-    // setIsLoading(false);
-  }, []);
+  const onUpdateInfo = useCallback(
+    async imageSrc => {
+      setIsLoading(true);
+
+      const userData = {
+        about,
+        address,
+        phone,
+        position,
+        fullname: name,
+        resumeUrl: `${resume.name} ${resume.url}`,
+        avatar_url: imageSrc,
+        skills: [],
+      };
+
+      try {
+        const response = await UserService.putUserInfo(userData);
+
+        if (response?.data?.status === ApiConstant.STT_OK) {
+          toast.show("Update info successfully", { type: "success" });
+          navigation.goBack();
+        }
+      } catch (error) {
+        toast.show("Update failed. Try again!", { type: "danger" });
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [about, address, name, navigation, phone, position, resume, toast],
+  );
 
   useEffect(() => {
     if (!isFocused) return;
 
-    onChangeName(userInfo.name);
-    onChangeNumber(userInfo.bio);
+    onChangeName(userInfo.fullname);
+    onChangePosition(userInfo.position);
+    onChangeAbout(userInfo.about);
+    onChangeNumber(userInfo.phone);
+    onChangeEmail(userInfo.email);
+    onChangeAddress(userInfo.address);
+
+    if (userInfo.resumeUrl) {
+      const splittedArr = userInfo.resumeUrl.split(" ");
+      onChangeResume({
+        name: splittedArr[0],
+        url: splittedArr[1],
+      });
+    }
   }, [userInfo, isFocused]);
 
   return (
@@ -116,6 +129,22 @@ const UserInfoChange = forwardRef((props, ref) => {
           placeholder="Address"
           value={address}
           onChangeText={onChangeAddress}
+          style={{ marginBottom: 16 }}
+        />
+      </View>
+
+      <UploadResume
+        resume={resume}
+        onChangeResume={onChangeResume}
+        setIsLoading={setIsLoading}
+      />
+
+      <View style={{ marginTop: 16 }}>
+        <Text style={styles.title}>Skills</Text>
+        <CommonTextInput
+          placeholder="Skills"
+          value={skills}
+          onChangeText={onChangeSkills}
         />
       </View>
 

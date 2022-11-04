@@ -11,13 +11,20 @@ const Skills = () => {
       <Text style={styles.title}>Skills</Text>
 
       <View style={styles.list}>
-        {(user?.skills || []).map((item, index) => (
-          <CommonChip
-            key={index}
-            label={item}
-            style={[styles.item, index !== SKILLS.length - 1 ? styles.mr : {}]}
-          />
-        ))}
+        {!user?.skills?.length ? (
+          <Text>{`Let's update your skills`}</Text>
+        ) : (
+          (user?.skills || []).map((item, index) => (
+            <CommonChip
+              key={index}
+              label={item}
+              style={[
+                styles.item,
+                index !== SKILLS.length - 1 ? styles.mr : {},
+              ]}
+            />
+          ))
+        )}
       </View>
     </View>
   );

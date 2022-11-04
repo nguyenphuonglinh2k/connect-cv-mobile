@@ -21,10 +21,10 @@ export const getUserInfo = async () => {
   });
 };
 
-export const putUserInfo = async (userId, data) => {
+export const putUserInfo = async data => {
   const token = await clientStorage.get(AppConstant.AUTH_TOKEN_KEY);
 
-  return Api.put(StringFormat(ApiConstant.PUT_USER_INFO, { userId }), data, {
+  return Api.put(StringFormat(ApiConstant.PUT_USER_INFO), data, {
     headers: {
       authorization: axiosConfig.headers.authorization || token,
     },

@@ -39,7 +39,7 @@ const CardJobItem = ({ data, style, ...otherProps }) => {
         />
         <IconTextRow
           icon={<BagIcon />}
-          value={data?.jobDetails[0]?.location.join("")}
+          value={data?.jobDetails[0]?.location.join(", ")}
         />
       </View>
     </TouchableOpacity>

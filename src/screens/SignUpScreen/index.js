@@ -74,7 +74,7 @@ const SignUpScreen = () => {
       </ScrollView>
 
       <BottomButton />
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner isVisible />}
     </View>
   );
 };

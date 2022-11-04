@@ -60,3 +60,22 @@ export const getUploadFormData = async () => {
 
   return bodyFormData;
 };
+
+export const getUploadPdfFormData = async () => {
+  const response = await DocumentPicker.pick({
+    type: [DocumentPicker.types.pdf],
+  });
+  const pdf = {
+    uri: response[0].uri,
+    type: response[0].type,
+    name: response[0].name,
+  };
+  const bodyFormData = new FormData();
+
+  bodyFormData.append("file", pdf);
+  bodyFormData.append("upload_preset", "instello");
+  bodyFormData.append("cloud_name", "coders.tokyo");
+  bodyFormData.append("folder", "instello");
+
+  return bodyFormData;
+};

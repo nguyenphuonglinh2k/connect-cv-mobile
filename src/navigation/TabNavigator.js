@@ -53,6 +53,7 @@ export default function TabNavigator() {
         name={PathConstant.TabName.search}
         component={SearchStack}
         options={() => ({
+          unmountOnBlur: true,
           tabBarIcon: ({ focused }) => (
             <SearchIcon color={focused ? "#673ab7" : "#A19FA8"} />
           ),

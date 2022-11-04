@@ -4,8 +4,12 @@ import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import BookmarkIcon from "icons/BookmarkIcon";
 import LoadingSpinner from "components/LoadingSpinner";
 import { JobService } from "services/index";
+import { ApiConstant } from "const/index";
+import { useToast } from "react-native-toast-notifications";
 
 const Actions = ({ jobId, saved }) => {
+  const toast = useToast();
+
   const [isSaved, setIsSaved] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,7 +83,7 @@ const Actions = ({ jobId, saved }) => {
           <Text style={styles.textBtn}>Apply job</Text>
         </TouchableOpacity>
       </View>
-      {isLoading && <LoadingSpinner />}
+      <LoadingSpinner isVisible={isLoading} />
     </>
   );
 };

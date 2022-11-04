@@ -47,3 +47,23 @@ export function* getJobDetailRequest(action) {
     yield put(JobActions.jobFailure(error));
   }
 }
+
+export function* getRecommendedJobsRequest() {
+  try {
+    const response = yield call(JobService.getRecommendedJobs);
+
+    if (response.status === ApiConstant.STT_OK) {
+      const responseData = toCamel(response.data.data);
+
+      yield put(
+        JobActions.jobSuccess({
+          recommendedJobs: responseData.data,
+        }),
+      );
+    } else {
+      yield put(JobActions.jobFailure(response.data));
+    }
+  } catch (error) {
+    yield put(JobActions.jobFailure(error));
+  }
+}

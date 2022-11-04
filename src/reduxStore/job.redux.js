@@ -22,19 +22,14 @@ export const INITIAL_STATE = {
   status: null,
 
   jobs: [],
-  pageSize: null,
-  total: null,
+  pageSize: 5,
+  total: 0,
 
   recommendedJobs: [],
 
   job: {},
 
-  searchParams: {
-    name: "",
-    location: "",
-    salary: "",
-    profession: "",
-  },
+  searchTag: "",
 };
 
 /* ------------- Reducers ------------- */

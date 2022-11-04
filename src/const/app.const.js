@@ -6,17 +6,16 @@ export const DATE_TIME_FORMAT = "HH:mm DD-MM-YYYY";
 
 export const CAREER_TYPES = [
   {
-    id: "MKT",
-    name: "Marketing",
+    id: "DMKT",
+    label: "Digital Marketing",
   },
   {
     id: "CNTT",
-    name: "Information technology",
+    label: "Information technology",
   },
-  {
-    id: "BH",
-    name: "Insurance",
-  },
+  { id: "CTVKD", label: "Cộng tác viên kinh doanh" },
+  { id: "TVTC", label: "Tư Vấn Tài Chính" },
+  { id: "QC", label: "Kiểm Thử Phần Mềm" },
 ];
 
 export const SALARY_TYPES = [
@@ -26,6 +25,29 @@ export const SALARY_TYPES = [
   { id: "20-30", label: "20-30" },
   { id: "30-50", label: "30-50" },
   { id: ">50", label: ">50" },
+];
+
+export const LOCATION_TYPES = [
+  {
+    id: "HaNoi",
+    label: "HaNoi",
+  },
+  {
+    id: "HoChiMinh",
+    label: "HoChiMinh",
+  },
+  {
+    id: "DaNang",
+    label: "DaNang",
+  },
+  {
+    id: "NhaTrang",
+    label: "NhaTrang",
+  },
+  {
+    id: "CanTho",
+    label: "CanTho",
+  },
 ];
 
 export const DEFAULT_AVATAR_URL =

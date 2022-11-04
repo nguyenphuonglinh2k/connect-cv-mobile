@@ -1,12 +1,17 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useSelector } from "react-redux";
 import Chip from "./Chip";
 
 const FilterChips = () => {
+  const searchTag = useSelector(({ jobRedux }) => jobRedux.searchTag);
+
   return (
-    <View style={styles.wrapper}>
-      <Chip label="Fulltime" />
-    </View>
+    Boolean(searchTag) && (
+      <View style={styles.wrapper}>
+        <Chip label={searchTag} />
+      </View>
+    )
   );
 };
 

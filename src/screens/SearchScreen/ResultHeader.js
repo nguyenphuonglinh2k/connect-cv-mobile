@@ -4,10 +4,13 @@ import { RouteName } from "const/path.const";
 import FilterIcon from "icons/FilterIcon";
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { useSelector } from "react-redux";
 import FilterChips from "./FilterChips";
 
 const ResultHeader = () => {
   const navigation = useNavigation();
+
+  const [total] = useSelector(({ jobRedux }) => [jobRedux.total]);
 
   const handleNavigateToFilterScreen = () => {
     navigation.navigate(RouteName.filter);
@@ -24,7 +27,9 @@ const ResultHeader = () => {
           <FilterIcon />
         </IconButton>
       </View>
-      <Text style={styles.subText}>45 jobs founded</Text>
+      <Text style={styles.subText}>
+        {total} {total > 1 ? "jobs" : "job"} founded
+      </Text>
       <FilterChips />
     </View>
   );

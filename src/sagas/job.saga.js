@@ -30,9 +30,9 @@ export function* getSearchedJobsRequest(action) {
   const params = action.data;
 
   try {
-    const response = yield call(JobService.getSavedJobs, params);
+    const response = yield call(JobService.getSearchedJobs, params);
 
-    if (response.status === ApiConstant.STT_OK) {
+    if (response?.data?.status === ApiConstant.STT_OK) {
       const responseData = toCamel(response.data.data);
 
       yield put(
@@ -40,6 +40,8 @@ export function* getSearchedJobsRequest(action) {
           jobs: responseData.data,
           pageSize: responseData.resultPerPage,
           total: responseData.total,
+          searchTag:
+            params?.location || params?.salary || params?.profession || "",
         }),
       );
     } else {

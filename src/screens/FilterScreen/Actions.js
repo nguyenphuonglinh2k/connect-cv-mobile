@@ -1,22 +1,30 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { StyleSheet, View } from "react-native";
 import CommonButton from "components/CommonButton";
 
-const Actions = () => {
+const Actions = ({ onClear, onConfirm }) => {
   return (
     <View style={styles.wrapper}>
       <CommonButton
-        label="Cancel"
+        label="Clear"
         style={styles.firstButton}
         labelStyle={styles.label}
+        onPress={onClear}
       />
-      <CommonButton label="Apply" style={{ flex: 1, marginLeft: 4 }} />
+      <CommonButton
+        label="Confirm"
+        style={{ flex: 1, marginLeft: 4 }}
+        onPress={onConfirm}
+      />
     </View>
   );
 };
 
-Actions.propTypes = {};
+Actions.propTypes = {
+  onClear: PropTypes.func,
+  onConfirm: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -38,7 +38,7 @@ export const POST_APPLY_JOB = "/jobinformation/create";
 export const GET_APPLIED_JOBS = "/jobinformation/get";
 export const GET_SAVED_JOBS = "/saveJob/get";
 export const POST_SAVE_JOB = "/saveJob/create";
-export const DELETE_SAVED_JOB = "/saveJob/detele";
+export const DELETE_SAVED_JOB = "/saveJob/delete";
 export const GET_RECOMMENDED_JOBS = "/jobinformation/get_random";
 
 export const GET_SEARCHED_JOBS = "/jobinformation/search_job";

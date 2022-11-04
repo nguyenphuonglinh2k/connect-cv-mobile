@@ -52,7 +52,7 @@ const Actions = ({ jobId, saved }) => {
     setIsLoading(true);
     try {
       const response = await JobService.deleteSavedJob({
-        id: jobId,
+        job_id: jobId,
       });
 
       if (response.status === ApiConstant.STT_OK) {

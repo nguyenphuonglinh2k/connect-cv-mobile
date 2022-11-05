@@ -45,4 +45,4 @@ export const GET_SEARCHED_JOBS = "/jobinformation/search_job";
 export const POST_CHECK_SAVED_JOB = "/saveJob/check_save_job";
 
 // Company
-export const GET_COMPANY_DETAIL = "/company/detail_company/{companyId}";
+export const GET_COMPANY_DETAIL = "/company/get_job_company/{companyId}";

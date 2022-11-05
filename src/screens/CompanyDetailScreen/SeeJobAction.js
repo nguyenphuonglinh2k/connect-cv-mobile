@@ -5,12 +5,12 @@ import ArrowIcon from "icons/ArrowIcon";
 import { useNavigation } from "@react-navigation/core";
 import { RouteName } from "const/path.const";
 
-const SeeJobAction = ({ style, ...otherProps }) => {
+const SeeJobAction = ({ data, style, ...otherProps }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate(RouteName.availableJobs, {
-      companyName: "Highspeed Studios",
+      companyId: data.id,
     });
   };
 
@@ -21,7 +21,7 @@ const SeeJobAction = ({ style, ...otherProps }) => {
         onPress={handlePress}
         {...otherProps}
       >
-        <Text style={styles.label}>{`21 Available Jobs`}</Text>
+        <Text style={styles.label}>{`Available Jobs`}</Text>
         <ArrowIcon style={styles.icon} color="white" />
       </TouchableOpacity>
     </View>
@@ -30,6 +30,7 @@ const SeeJobAction = ({ style, ...otherProps }) => {
 
 SeeJobAction.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  data: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Image, StyleSheet, View, Text } from "react-native";
 import StarIcon from "icons/StarIcon";
 
-const Header = ({ style, ...otherProps }) => {
+const Header = ({ data, style, ...otherProps }) => {
   return (
     <View {...otherProps}>
       <View style={styles.bannerWrapper}>
@@ -22,9 +22,11 @@ const Header = ({ style, ...otherProps }) => {
       </View>
 
       <View style={styles.info}>
-        <View>
-          <Text style={styles.name}>Highspeed Studios</Text>
-          <Text style={styles.location}>Medan, Indonesia</Text>
+        <View style={{ flex: 1, marginRight: 4 }}>
+          <Text style={styles.name}>{data.name}</Text>
+          <Text style={styles.location}>
+            {data.detail?.address?.join(", ")}
+          </Text>
         </View>
         <View style={styles.rateWrapper}>
           <StarIcon />
@@ -37,6 +39,7 @@ const Header = ({ style, ...otherProps }) => {
 
 Header.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  data: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

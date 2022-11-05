@@ -5,23 +5,23 @@ import PhoneIcon from "icons/PhoneIcon";
 import EmailIcon from "icons/EmailIcon";
 import LocationIcon from "icons/LocationIcon";
 
-const Contact = () => {
+const Contact = ({ data }) => {
   return (
     <View style={styles.wrapper}>
       <ContactItem
         title="Telephone"
-        value="+51 632 445 556"
+        value={data?.detail?.phoneNumber}
         icon={<PhoneIcon />}
       />
       <ContactItem
         title="Email"
-        value="highspeedst@mail.com"
+        value={data?.detail?.email}
         icon={<EmailIcon color="#40189D" />}
         style={styles.marginVertical}
       />
       <ContactItem
         title="Website"
-        value="highspeed.studio"
+        value={data?.detail?.email}
         icon={<LocationIcon />}
       />
     </View>
@@ -48,6 +48,10 @@ ContactItem.propTypes = {
 };
 
 ContactItem.defaultProps = {};
+
+Contact.propTypes = {
+  data: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
   wrapper: {

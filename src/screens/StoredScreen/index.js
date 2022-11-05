@@ -90,7 +90,11 @@ const StoredScreen = () => {
           <AppliedJobs data={data} />
         )}
         {selectedTab === STORE_JOB_TAB_VALUES.saved && (
-          <SavedJobs data={data} onRefetchData={handleGetData} />
+          <SavedJobs
+            data={data}
+            onRefetchData={handleGetData}
+            setIsLoading={setIsLoading}
+          />
         )}
       </View>
 

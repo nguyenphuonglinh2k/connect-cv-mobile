@@ -2,8 +2,31 @@ import CardJobItem from "./CardJobItem";
 import React from "react";
 import PropTypes from "prop-types";
 import { FlatList, StyleSheet } from "react-native";
+import { useToast } from "react-native-toast-notifications";
+import { JobService } from "services/index";
+import { ApiConstant } from "const/index";
 
-const SavedJobs = ({ data, onRefetchData, ...otherProps }) => {
+const SavedJobs = ({ data, onRefetchData, setIsLoading, ...otherProps }) => {
+  const toast = useToast();
+
+  const handleDeleteSavedJob = async jobId => {
+    setIsLoading(true);
+    try {
+      const response = await JobService.deleteSavedJob({
+        job_id: jobId,
+      });
+
+      if (response.data?.status === ApiConstant.STT_OK) {
+        onRefetchData();
+        toast.show("Remove saved job successfully", { type: "success" });
+      }
+    } catch (error) {
+      toast.show("Something went wrong", { type: "danger" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
@@ -12,7 +35,7 @@ const SavedJobs = ({ data, onRefetchData, ...otherProps }) => {
         <CardJobItem
           data={item}
           style={styles.item}
-          onRefetchData={onRefetchData}
+          onRemoveSavedJob={handleDeleteSavedJob}
         />
       )}
       keyExtractor={(_, i) => i}
@@ -25,6 +48,7 @@ const SavedJobs = ({ data, onRefetchData, ...otherProps }) => {
 SavedJobs.propTypes = {
   data: PropTypes.array,
   onRefetchData: PropTypes.func,
+  setIsLoading: PropTypes.func,
 };
 
 const MOCK_DATA = Array.from(new Array(5)).map(() => ({

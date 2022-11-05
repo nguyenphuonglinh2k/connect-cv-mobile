@@ -8,17 +8,19 @@ import { DEFAULT_COMPANY_LOGO } from "const/app.const";
 import { useNavigation } from "@react-navigation/core";
 import { RouteName, TabName } from "const/path.const";
 
-const CardJobItem = ({ data, style, saved, onRefetchData, ...otherProps }) => {
+const CardJobItem = ({
+  data,
+  style,
+  saved,
+  onRemoveSavedJob,
+  ...otherProps
+}) => {
   const navigation = useNavigation();
 
   const salary =
     data?.jobDetails[0]?.generalInformation?.salary === "Thỏa thuận"
       ? data?.jobDetails[0]?.generalInformation?.salary
       : `${data?.jobDetails[0]?.generalInformation?.salary}tr`;
-
-  const handleRemoveSavedJob = () => {
-    // TODO
-  };
 
   const handleGotoDetail = () => {
     navigation.navigate(TabName.search, {
@@ -46,7 +48,7 @@ const CardJobItem = ({ data, style, saved, onRefetchData, ...otherProps }) => {
 
         <IconTextRow icon={<CoinIcon />} value={salary} />
       </View>
-      <IconButton onPress={handleRemoveSavedJob}>
+      <IconButton onPress={() => onRemoveSavedJob(data.id)}>
         <BookmarkIcon fill={saved ? "#673ab7" : "none"} />
       </IconButton>
     </TouchableOpacity>
@@ -77,7 +79,7 @@ CardJobItem.propTypes = {
     jobDetails: PropTypes.array,
     id: PropTypes.any,
   }),
-  onRefetchData: PropTypes.func,
+  onRemoveSavedJob: PropTypes.func,
   saved: PropTypes.bool,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };

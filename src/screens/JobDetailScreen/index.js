@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { MainLayout } from "layouts";
 import { ScrollView, StyleSheet } from "react-native";
 import Header from "./Header";
@@ -8,6 +8,9 @@ import Actions from "./Actions";
 import { useRoute } from "@react-navigation/core";
 import { useDispatch, useSelector } from "react-redux";
 import JobActions from "reduxStore/job.redux";
+import { JobService } from "services/index";
+import { ApiConstant } from "const/index";
+import LoadingSpinner from "components/LoadingSpinner";
 
 const JobDetailScreen = () => {
   const dispatch = useDispatch();
@@ -16,17 +19,41 @@ const JobDetailScreen = () => {
 
   const job = useSelector(({ jobRedux }) => jobRedux.job);
 
+  const [saved, setSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const salary = useMemo(() => {
     if (!job.jobDetails) return "Thỏa thuận";
 
     return job.jobDetails[0]?.generalInformation?.salary;
   }, [job]);
 
-  const handleGetJobDetail = useCallback(async () => {
+  const handleGetJobDetail = useCallback(() => {
     if (jobId) {
       dispatch(JobActions.getJobDetailRequest({ jobId }));
     }
   }, [jobId, dispatch]);
+
+  const handleCheckSavedJob = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await JobService.postCheckSavedJob({
+        job_id: jobId,
+      });
+
+      if (response?.data?.status === ApiConstant.STT_OK) {
+        setSaved(response.data.message);
+      }
+    } catch (error) {
+      console.log("Check saved job", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [jobId]);
+
+  useEffect(() => {
+    handleCheckSavedJob();
+  }, [handleCheckSavedJob]);
 
   useEffect(() => {
     handleGetJobDetail();
@@ -45,7 +72,8 @@ const JobDetailScreen = () => {
         <Description value={job?.jobDescription} />
       </ScrollView>
 
-      <Actions jobId={job.id} />
+      <Actions jobId={job.id} saved={saved} />
+      <LoadingSpinner isVisible={isLoading} />
     </MainLayout>
   );
 };

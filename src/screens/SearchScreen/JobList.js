@@ -4,7 +4,7 @@ import CardJobItem from "components/CardJobItem";
 import { useSelector } from "react-redux";
 
 const JobList = props => {
-  const [jobs] = useSelector(({ jobRedux }) => [jobRedux.jobs]);
+  const jobs = useSelector(({ jobRedux }) => jobRedux.jobs);
 
   return (
     <FlatList

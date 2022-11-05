@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Chip from "./Chip";
+import JobActions from "reduxStore/job.redux";
 
 const FilterChips = () => {
+  const dispatch = useDispatch();
+
   const searchTag = useSelector(({ jobRedux }) => jobRedux.searchTag);
 
+  const [chip, setChip] = useState("");
+
+  const handleRefetchJobs = () => {
+    dispatch(JobActions.getSearchedJobsRequest({}));
+    setChip("");
+  };
+
+  useEffect(() => {
+    setChip(searchTag);
+  }, [searchTag]);
+
   return (
-    Boolean(searchTag) && (
+    Boolean(chip) && (
       <View style={styles.wrapper}>
-        <Chip label={searchTag} />
+        <Chip label={chip} onPress={handleRefetchJobs} />
       </View>
     )
   );

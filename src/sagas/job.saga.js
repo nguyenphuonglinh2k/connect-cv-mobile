@@ -27,13 +27,13 @@ export function* getJobsRequest() {
 }
 
 export function* getSearchedJobsRequest(action) {
-  const params = action.data;
+  const data = action.data;
 
   try {
-    const response = yield call(JobService.getSearchedJobs, params);
+    const response = yield call(JobService.getSearchedJobs, data);
 
-    if (response?.data?.status === ApiConstant.STT_OK) {
-      const responseData = toCamel(response.data.data);
+    if (response.status === ApiConstant.STT_OK) {
+      const responseData = toCamel(response.data);
 
       yield put(
         JobActions.jobSuccess({
@@ -41,7 +41,10 @@ export function* getSearchedJobsRequest(action) {
           pageSize: responseData.resultPerPage,
           total: responseData.total,
           searchTag:
-            params?.location || params?.salary || params?.profession || "",
+            data?.params?.location ||
+            data?.params?.salary ||
+            data?.params?.profession ||
+            "",
         }),
       );
     } else {

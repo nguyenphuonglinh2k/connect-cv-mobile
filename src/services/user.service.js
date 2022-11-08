@@ -32,11 +32,9 @@ export const putUserInfo = async data => {
 };
 
 export const postCloudinaryUpload = async data => {
-  const response = await axios.post(
-    "https://api.cloudinary.com/v1_1/coders-tokyo/image/upload",
-    data,
-    { headers: ApiConstant.HEADER_FORM_DATA_DEFAULT },
-  );
+  const response = await axios.post(process.env.CLOUDINARY_UPLOAD_URL, data, {
+    headers: ApiConstant.HEADER_FORM_DATA_DEFAULT,
+  });
 
   return response;
 };

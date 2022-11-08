@@ -55,7 +55,7 @@ export const getUploadFormData = async () => {
 
   bodyFormData.append("file", photo);
   bodyFormData.append("upload_preset", "instello");
-  bodyFormData.append("cloud_name", "coders.tokyo");
+  bodyFormData.append("cloud_name", process.env.CLOUDINARY_NAME);
   bodyFormData.append("folder", "instello");
 
   return bodyFormData;
@@ -74,7 +74,7 @@ export const getUploadPdfFormData = async () => {
 
   bodyFormData.append("file", pdf);
   bodyFormData.append("upload_preset", "instello");
-  bodyFormData.append("cloud_name", "coders.tokyo");
+  bodyFormData.append("cloud_name", process.env.CLOUDINARY_NAME);
   bodyFormData.append("folder", "instello");
 
   return bodyFormData;
